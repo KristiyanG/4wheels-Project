@@ -13,7 +13,8 @@
 <body>
 
   <div id="_1">
-    <form id="_2" role="form">
+  
+    <form id="_2" name="LoginForm" method="POST" action="../LoginServlet" role="form">
 
       <div id="_3">
 
@@ -41,17 +42,18 @@
             Password<br/>
         </span>
       </div>
-      <input type="text" id="_13" placeholder="Email" class="form-control" />
-      <input type="text" id="_14" placeholder="Password" class="form-control" />
+      <input type="text" name="Email" id="_13" placeholder="Email" class="form-control" />
+      <input type="text" name="Password" id="_14" placeholder="Password" class="form-control" />
       <div class="checkbox" id="_15">
         <label id="_16">
           <input type="checkbox" checked />Remember me
         </label>
       </div>
-      <button id="_17" data-pagelink="Profile" class="btn btn-default">
-        Sign in
+      
+      <input type="submit" value="Login" id="_17" data-pagelink="Profile" class="btn btn-default">
 
-      </button>
+      </input>
+      
     </form>
 
     <i id="_18"></i>
