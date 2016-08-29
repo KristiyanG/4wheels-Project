@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import connectors.UserCo;
 import busynesLogic.containers.UserContainer;
 import busynesLogic.exceptions.InvalidPasswordException;
+import busynesLogic.exceptions.UserException;
 import busynesLogic.models.User;
 /**
  * Servlet implementation class RegisterServlet
@@ -30,25 +32,7 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		doGet(request, response);
-//		
-//		System.out.println(request.getLocalName());
-//		System.out.println(request.getParameter("FirstName"));
-//		System.out.println(request.getParameter("Password"));
-		
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("pages/Profile.html");
-//		dispatcher.forward(request, response);
-		
-//		for (Entry<String, String[]> ent : request.getParameterMap().entrySet()) {
-//			
-//			System.out.println(ent.getKey());
-//			for (String str : ent.getValue()) {
-//				System.out.println("	"+str);
-//			}
-//			
-//		}
-//		System.out.println(request.getParameter("LastName"));
+
 		
 		String name = request.getParameter("FullName");
 		String password = request.getParameter("Password");
@@ -56,27 +40,35 @@ public class RegisterServlet extends HttpServlet {
 		String phoneNumber = request.getParameter("PhoneNumber");
 		String email = request.getParameter("EmailAddres");
 		String location = request.getParameter("City");
-		
-		String message = registerUser(name, password, confirmPass, phoneNumber, email, location);
-		String html = "<h2>" + message + "</h2>";
-		response.getWriter().append();
-	}
-	
-	private String registerUser(String name, String password, String password2, String phone,
-			String email, String location){
-		User user = null;
-		try {
-			user = new User(name, password, password2, phone, email, location);
+		String page=null;
+		if(name==null||password==null||phoneNumber==null||confirmPass==null||email==null||location==null){
+			page="pages/Profile.html";
+		}
+		 try {
+			registerUser(name, password, confirmPass, phoneNumber, email, location);
+			page="pages/Profile.html";
 		} catch (InvalidPasswordException e) {
-
-			return e.getMessage();
+			page="pages/Register.html";
+		} catch (UserException e) {
+			page="pages/Register.html";
 		}
 		
-		UserContainer.addUser(email, user);
+		 response.sendRedirect(page);
+	}
+	
+	private void registerUser(String name, String password, String password2, String phone,
+			String email, String location) throws InvalidPasswordException, UserException{
+		User user = null;
 		
-		System.out.println(user);
+				user = new User(name, password, password2, phone, email, location);
+			System.out.println("registrirah go");
 		
-		return "Wellcome " +  name + "!";
+		UserCo userCo= new UserCo();
+		
+		
+		
+		System.out.println(userCo.insertUser(user));
+		
 	}
 
 }

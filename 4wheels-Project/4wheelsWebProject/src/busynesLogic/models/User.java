@@ -1,37 +1,51 @@
 package busynesLogic.models;
 
-import org.apache.tomcat.util.file.Matcher;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import busynesLogic.exceptions.InvalidPasswordException;
+import busynesLogic.exceptions.UserException;
 import busynesLogic.interfaces.Vehicle;
 
 public class User {
 
-	private static int unique_id = 0;
 	
 	private String name;
 	private String phone;
 	private String password;
-	private int id;
 	private int rating;
 	private String email;
 	private String location;
 	private int votes;
 
+	
+	
+	public User(String name, String phone, String password, String email,
+			String location) {
+		super();
+		this.name = name;
+		this.phone = phone;
+		this.password = password;
+		this.email = email;
+		this.location = location;
+		this.rating=0;
+	}
+
 	public User(String name, String password, String password2, String phone,
 			String email, String location) throws InvalidPasswordException,UserException {
 		
-		this.name = name;
+		setName(name);
+		setEmail(email);
 		if (!password.equals(password2)) {
 			throw new InvalidPasswordException("You enter different password");
 		}
-		this.password = password;
-		this.phone = phone;
-		this.email = email;
-		this.location = location;
-		this.id = ++unique_id;
+		setPassword(password);
+		setPhone(phone);
+		
+		setLocation(location);
 		this.votes=0;
-		this.rating = 0;
+		setRating(rating);
 	}
 
 	public String getPhone() {
@@ -46,27 +60,19 @@ public class User {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		if(password.lenght()<5){
+	public void setPassword(String password) throws InvalidPasswordException {
+		if(password.length()<4){
 			throw new InvalidPasswordException("Password is short");
 		}
 		this.password = password;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
-		if(!isValidEmail(email)){
+	public void setEmail(String email) throws UserException {
+		if(isValidEmail(email)){
 			throw new UserException("The email address is not valid");
 		}
 		this.email = email;
@@ -76,7 +82,7 @@ public class User {
 		return location;
 	}
 
-	public void setLocation(String location) {
+	public void setLocation(String location) throws UserException {
 		if(location==null){
 			throw new UserException("The location can not be null");
 			
@@ -88,8 +94,8 @@ public class User {
 		return votes;
 	}
 
-	public void setVotes(int votes) {
-		this.votes = votes;
+	public void setVotes() {
+		this.votes++;
 	}
 
 	public void setName(String name) {
@@ -98,7 +104,7 @@ public class User {
 
 	public void setRating(int rating) {
 		this.rating = rating;
-	}
+	}//TODO setRating up or down
 
 	public Vehicle addCar(String make, String model, int year, int rating,
 			double price, boolean xenon, boolean abs){
@@ -133,7 +139,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", phone=" + phone + ", password=" + password + ", id=" + id + ", rating="
+		return "User [name=" + name + ", phone=" + phone + ", password=" + password + ", id=" + ", rating="
 				+ rating + ", email=" + email + ", location=" + location + ", votes=" + votes + "]";
 	}
 

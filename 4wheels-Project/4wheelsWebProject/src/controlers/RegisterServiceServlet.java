@@ -26,15 +26,15 @@ public class RegisterServiceServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		
-		String name = request.getParameter("FullName");
-		String password = request.getParameter("Password");
-		String confirmPass = request.getParameter("ConfirmPassword");
-		String phoneNumber = request.getParameter("PhoneNumber");
-		String email = request.getParameter("EmailAddres");
-		String location = request.getParameter("City");
-		
-		String message = registerUser(name, password, confirmPass, phoneNumber, email, location);
-		String html = "<h2>" + message + "</h2>";
-		response.getWriter().append();
+//		String name = request.getParameter("FullName");
+//		String password = request.getParameter("Password");
+//		String confirmPass = request.getParameter("ConfirmPassword");
+//		String phoneNumber = request.getParameter("PhoneNumber");
+//		String email = request.getParameter("EmailAddres");
+//		String location = request.getParameter("City");
+//		
+//		String message = registerUser(name, password, confirmPass, phoneNumber, email, location);
+//		String html = "<h2>" + message + "</h2>";
+//		response.getWriter().append();
 	}
 }

@@ -1,12 +1,19 @@
 package controlers;
 
+import java.beans.Statement;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import connectors.UserCo;
 import busynesLogic.containers.UserContainer;
 import busynesLogic.models.User;
 
@@ -37,20 +44,23 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		doGet(request, response);
+		
+		doGet(request, response);
 		
 		String email = request.getParameter("Email");
 		String password = request.getParameter("Password");
+		UserCo logIn = new UserCo();
+		logIn.connectToDB();
+		System.out.println(email + "--- "+ password);
+		User user = logIn.getUser(email,password);
 		
-		User user = UserContainer.getUsers(email, password);
-		
-		
+	
 		if(user != null){
-			System.out.println(user);
+			response.sendRedirect("pages/Profile.html");
 		}
-		
-		response.getWriter().append("Wellcome " + user.getName()+"!");
+		else{
+			response.sendRedirect("pages/LoginPage.html");
+		}
 	}
 
 }
