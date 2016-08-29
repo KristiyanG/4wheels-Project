@@ -1,12 +1,14 @@
 package busynesLogic.models;
 
+import org.apache.tomcat.util.file.Matcher;
+
 import busynesLogic.exceptions.InvalidPasswordException;
 import busynesLogic.interfaces.Vehicle;
 
 public class User {
 
 	private static int unique_id = 0;
-
+	
 	private String name;
 	private String phone;
 	private String password;
@@ -17,7 +19,7 @@ public class User {
 	private int votes;
 
 	public User(String name, String password, String password2, String phone,
-			String email, String location) throws InvalidPasswordException {
+			String email, String location) throws InvalidPasswordException,UserException {
 		
 		this.name = name;
 		if (!password.equals(password2)) {
@@ -30,6 +32,72 @@ public class User {
 		this.id = ++unique_id;
 		this.votes=0;
 		this.rating = 0;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		if(password.lenght()<5){
+			throw new InvalidPasswordException("Password is short");
+		}
+		this.password = password;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		if(!isValidEmail(email)){
+			throw new UserException("The email address is not valid");
+		}
+		this.email = email;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		if(location==null){
+			throw new UserException("The location can not be null");
+			
+		}
+		this.location = location;
+	}
+
+	public int getVotes() {
+		return votes;
+	}
+
+	public void setVotes(int votes) {
+		this.votes = votes;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 
 	public Vehicle addCar(String make, String model, int year, int rating,
@@ -72,5 +140,10 @@ public class User {
 	public CharSequence getName() {
 		return this.name;
 	}
-	
+	public static boolean isValidEmail(String enteredEmail){
+        String EMAIL_REGIX = "^[\\\\w!#$%&’*+/=?`{|}~^-]+(?:\\\\.[\\\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,6}$";
+        Pattern pattern = Pattern.compile(EMAIL_REGIX);
+        Matcher matcher = pattern.matcher(enteredEmail);
+        return ((!enteredEmail.isEmpty()) && (enteredEmail!=null) && (matcher.matches()));
+	}
 }

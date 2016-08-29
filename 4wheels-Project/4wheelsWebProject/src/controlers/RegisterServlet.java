@@ -59,7 +59,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		String message = registerUser(name, password, confirmPass, phoneNumber, email, location);
 		String html = "<h2>" + message + "</h2>";
-		response.getWriter().append(html);
+		response.getWriter().append();
 	}
 	
 	private String registerUser(String name, String password, String password2, String phone,
