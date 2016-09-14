@@ -24,11 +24,7 @@ class DBManager {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		try {
-			connection = DriverManager.getConnection(URL, DB_USERNAME, DB_PASSWORD);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
 	}
 	
 	synchronized static DBManager getInstance(){
@@ -39,6 +35,11 @@ class DBManager {
 	}
 	
 	Connection getConnection() {
+		try {
+			connection = DriverManager.getConnection(URL, DB_USERNAME, DB_PASSWORD);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return connection;
 	}
 }

@@ -58,9 +58,7 @@ public class RegisterServlet extends HttpServlet {
 	
 	private void registerUser(String name, String password, String password2, String phone,
 			String email, String location) throws InvalidPasswordException, UserException{
-		User user = null;
-		
-				user = new User(name, password, password2, phone, email, location);
+		User user =  new User(name, password, password2, phone, email, location);
 			System.out.println("registrirah go");
 		
 		UserDAO userCo= UserDAO.getInstance();

@@ -1,10 +1,16 @@
 package busynesLogic.models;
 
-import java.beans.Statement;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 import busynesLogic.exceptions.InvalidPasswordException;
 import busynesLogic.exceptions.UserException;
@@ -13,6 +19,7 @@ public class UserDAO {
 
 	private  Connection connection;
 	private static UserDAO instance;
+	private Map<String, User> users = new HashMap<>();
 private UserDAO(){}
 	
 	public synchronized static UserDAO getInstance(){
@@ -23,18 +30,45 @@ private UserDAO(){}
 		return instance;
 	}
 
-//	public UserDAO() {
-//
-//		this.connection=DBManager.getInstance().getConnection();
-//	}
-
+	private  Map<String, User> getAllUsers() throws InvalidPasswordException, UserException{
+		Map<String, User> users = new HashMap<>();//email -> user
+//		location,name,rating ,email,user_password,phone
+		try {
+			this.connection=DBManager.getInstance().getConnection();
+			Statement st = DBManager.getInstance().getConnection().createStatement();
+			ResultSet resultSet = st.executeQuery("SELECT location, name, rating, email, user_password,phone FROM users;");
+			while(resultSet.next()){
+				users.put(resultSet.getString("email"),new User(	resultSet.getString("location"),
+									resultSet.getString("name"),
+									resultSet.getString("rating"),
+									resultSet.getString("email"),
+									resultSet.getString("user_password"),
+									resultSet.getString("phone")
+									));
+			}
+		} catch (SQLException e) {
+			System.out.println("Oops, cannot make statement.");
+			return users;
+		}
+		System.out.println("Users loaded successfully");
+		return users;
+	}
 	
 
-	public boolean insertUser(User user) {
+	public boolean insertUser(User user) throws InvalidPasswordException, UserException {
 		if (user == null) {
 			return false;
 		}
+		if(users.containsKey(user.getEmail())){
+			return false;
+		}
+		users.put(user.getEmail(), user);
 		
+		return addInDB(user);
+		
+	}
+
+	private boolean addInDB(User user) throws InvalidPasswordException, UserException {
 		try {
 			this.connection=DBManager.getInstance().getConnection();
 			java.sql.Statement statement = connection.createStatement();
@@ -50,6 +84,7 @@ private UserDAO(){}
 										user.getName(), user.getLocation(),
 										user.getPassword(), user.getEmail(),
 										user.getPhone()));
+				getAllUsers().put(user.getEmail(),user);
 				rs.close();
 				statement.close();
 				connection.close();
@@ -81,12 +116,27 @@ private UserDAO(){}
 
 			return e.getMessage();
 		}
-		insertUser(user);
+		try {
+			insertUser(user);
+		} catch (InvalidPasswordException | UserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return "Wellcome " + name + "!";
 	}
 
 	public User getUser(String email,String password) {
+		User u = users.get(email);
+		if(u!=null){
+			return u;
+		}
+		return searchInDB(email, password);
+		
+
+	}
+
+	private User searchInDB(String email, String password) {
 		ResultSet rs = null;
 		java.sql.Statement statement=null;
 		try {
@@ -133,18 +183,32 @@ private UserDAO(){}
 			}
 			
 		}
-		
-
 	}
 
 	public boolean validateUser(String email, String password) {
 
+		if(users.containsKey(email)){
+			User u = users.get(email);
+			if(u.getPassword().equals(password)){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		return validateUserInDB(email, password);
+	}
+
+	private boolean validateUserInDB(String email, String password) {
 		this.connection=DBManager.getInstance().getConnection();
-		java.sql.Statement statement;
+	
 		try {
-			statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(String.format(
-					"select * from users where email = '%s'", email));
+			String insertSQL = "select * from users where email = ?"; 
+			 PreparedStatement stmt =
+					 connection.prepareStatement(insertSQL);
+				stmt.setString(1, email);
+				stmt.executeUpdate();
+			ResultSet rs = stmt.executeQuery();
 			if (!rs.next()) {
 				return false;
 			}
