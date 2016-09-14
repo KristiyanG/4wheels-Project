@@ -1,0 +1,116 @@
+DROP SCHEMA
+
+IF EXISTS mobile;
+	CREATE SCHEMA mobile ;
+
+USE mobile;
+ 
+
+CREATE TABLE users (
+    id int UNSIGNED not null AUTO_INCREMENT ,
+    location VARCHAR(50) NOT NULL,
+    name VARCHAR(20),
+    email VARCHAR(30),
+    rating int(5),
+    user_password VARCHAR(12),
+    phone VARCHAR(15),
+    PRIMARY KEY(id)
+	);
+
+CREATE TABLE services (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    location VARCHAR(50) NOT NULL,
+	name VARCHAR(20),
+    rating int(5),
+	phone varchar(13),
+	user_id INT UNSIGNED NOT NULL,
+	PRIMARY KEY (id),
+	constraint services_user_id foreign  KEY (user_id) REFERENCES users(id)
+	);
+
+
+CREATE TABLE cars (
+   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    make VARCHAR(50) NOT NULL,
+    model VARCHAR(20) NOT NULL,
+    variant VARCHAR(30) ,
+    user_id int UNSIGNED not null ,
+    rating int(5),
+    vehicle_type VARCHAR(12) NOT NULL,
+    first_registration VARCHAR(20),
+    kilometer INT  ,
+    price VARCHAR(20), /* po dogovarqne */
+    power_full INT,
+    fuel_type VARCHAR(20),
+    transmision VARCHAR(20),
+    cubic_capacity VARCHAR(20),
+    region VARCHAR(20),
+    location VARCHAR(20),
+    color varchar(20),
+    interior_color VARCHAR(20),
+    metalic boolean not null default 0,
+    auxiliary_heating  boolean not null default 0,
+    cruise_control  boolean not null default 0,
+	sunroof  boolean not null default 0,
+	power_assisted_steering  boolean not null default 0,
+	MP3_interface  boolean not null default 0,
+	electric_windows  boolean not null default 0,
+	bluetooth  boolean not null default 0,
+	electric_heated_seats  boolean not null default 0,
+	tuner_radio  boolean not null default 0,
+	on_board_computer  boolean not null default 0,
+	rain_sensor  boolean not null default 0,
+	multifunction_steering_wheel boolean not null default 0, 
+	hands_free_kit  boolean not null default 0,
+	CD_player  boolean not null default 0,
+	electric_seat_adjustment  boolean not null default 0,
+	central_locking  boolean not null default 0,
+	start_stop_system boolean not null default 0, 
+	electric_side_mirror boolean not null default 0, 
+	ventilated_seats  boolean not null default 0,
+	navigation_system boolean not null default 0, 
+	head_up_display boolean not null default 0,
+    ABS boolean not null default 0,
+	fog_lamp boolean not null default 0,
+	LED_headlights boolean not null default 0,
+	four_wheel_drive boolean not null default 0,
+	adaptive_cruise_control boolean  not null default 0,
+	daytime_running_lights boolean not null default 0,
+	collision_avoidance_system boolean not null default 0,
+	light_sensor boolean not null default 0,
+	immobilizer boolean not null default 0,
+	adaptive_lighting boolean not null default 0,
+	front_Airbags boolean not null default 0,
+	side_Airbags boolean not null default 0,
+	more_Airbags boolean not null default 0,
+	lane_departure_warning_system boolean not null default 0,
+	rear boolean not null default 0,
+	front boolean not null default 0,
+	camera boolean not null default 0,
+	self_steering_systems boolean not null default 0,
+	ESP boolean not null default 0,
+	xenon_headlights boolean not null default 0,
+	traction_control boolean not null default 0,
+	keyless_entry boolean not null default 0,
+    photo1 BLOB, 
+	photo2 BLOB, 
+	photo3 BLOB, 
+	photo4 BLOB, 
+	photo5 BLOB, 
+    PRIMARY KEY(id),
+	foreign  KEY (user_id) REFERENCES users(id)
+		);
+
+INSERT INTO users(location,name,rating ,email,user_password,phone)
+VALUES (
+	'Sofia','Kristiyan',0, 'asb@abv.bg','123456','0896787878'),
+    ('Sofia','Teodor',0,'kkk@abv.bg','111111','0896888878'),
+    ('Plovdiv','Pesho', 0,'pesho@abv.bg','0123','0898456947');
+    
+INSERT INTO services( location ,name , rating ,phone ,user_id )
+VALUES ('Varna','Gosho-Maistora','0','0896547893', 1);
+ 
+ INSERT INTO cars(make,model, variant ,user_id ,rating, vehicle_type ,price,fuel_type)
+ VALUES('AUDI','a3','tdi 110',1,0,'saloon','4000','diesel'),
+  ('VW','bora','tdi 116',2,0,'saloon','5000','diesel'), 
+ ('Mercedes','c220','tdi 136',1,0,'saloon','7000','diesel');
