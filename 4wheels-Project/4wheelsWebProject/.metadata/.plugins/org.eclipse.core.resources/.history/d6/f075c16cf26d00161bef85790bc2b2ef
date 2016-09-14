@@ -1,9 +1,0 @@
-package connectors;
-
-public class Demo {
-
-	public static void main(String[] args) {
-		System.out.println("---");
-		UserCo user = new UserCo();
-	}
-}
