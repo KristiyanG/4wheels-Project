@@ -1,6 +1,5 @@
 package busynesLogic.models;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,7 +13,7 @@ class DBManager {
 	private static final String DB_PORT = "3306";
 	private static final String DB_NAME = "mobile";
 	private static final String DB_USERNAME = "root";
-	private static final String DB_PASSWORD = "1234";
+	private static final String DB_PASSWORD = "Teodor2234.";
 	private static final String URL = "jdbc:mysql://"+DB_IP+":"+DB_PORT+"/"+DB_NAME;
 	
 	private DBManager(){
@@ -24,7 +23,6 @@ class DBManager {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	synchronized static DBManager getInstance(){
@@ -37,6 +35,7 @@ class DBManager {
 	Connection getConnection() {
 		try {
 			connection = DriverManager.getConnection(URL, DB_USERNAME, DB_PASSWORD);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

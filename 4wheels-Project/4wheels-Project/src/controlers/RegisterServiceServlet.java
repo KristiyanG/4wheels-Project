@@ -2,15 +2,8 @@ package controlers;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import busynesLogic.containers.UserContainer;
-import busynesLogic.exceptions.InvalidPasswordException;
-import busynesLogic.models.User;
-
 import java.io.IOException;
 
 public class RegisterServiceServlet extends HttpServlet {

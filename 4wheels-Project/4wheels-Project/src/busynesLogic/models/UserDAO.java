@@ -2,15 +2,12 @@ package busynesLogic.models;
 
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import busynesLogic.exceptions.InvalidPasswordException;
 import busynesLogic.exceptions.UserException;
@@ -25,7 +22,6 @@ private UserDAO(){}
 	public synchronized static UserDAO getInstance(){
 		if(instance == null){
 			instance = new UserDAO();
-			
 		}
 		return instance;
 	}
@@ -36,9 +32,9 @@ private UserDAO(){}
 		try {
 			this.connection=DBManager.getInstance().getConnection();
 			Statement st = DBManager.getInstance().getConnection().createStatement();
-			ResultSet resultSet = st.executeQuery("SELECT location, name, rating, email, user_password,phone FROM users;");
+			ResultSet resultSet = st.executeQuery("SELECT location, name, rating, email, user_password, phone FROM users;");
 			while(resultSet.next()){
-				users.put(resultSet.getString("email"),new User(	resultSet.getString("location"),
+				users.put(resultSet.getString("email"),new User(resultSet.getString("location"),
 									resultSet.getString("name"),
 									resultSet.getString("rating"),
 									resultSet.getString("email"),
@@ -65,19 +61,19 @@ private UserDAO(){}
 		users.put(user.getEmail(), user);
 		
 		return addInDB(user);
-		
 	}
 
 	private boolean addInDB(User user) throws InvalidPasswordException, UserException {
 		try {
-			this.connection=DBManager.getInstance().getConnection();
-			java.sql.Statement statement = connection.createStatement();
+			this.connection = DBManager.getInstance().getConnection();
+			Statement statement = connection.createStatement();
 			
 			ResultSet rs = statement.executeQuery(String.format(
-					"select email from users where email = '%s'",
+					"SELECT email FROM users WHERE email = '%s'",
 					user.getEmail()));
 			
 			if (!rs.next()) {
+				//TODO 
 				int i = statement
 						.executeUpdate(String
 								.format("insert into users(name,location,user_password,email,phone) values('%s','%s','%s','%s','%s')",
@@ -97,6 +93,7 @@ private UserDAO(){}
 			return false;
 
 		} catch (SQLException e) {
+			System.out.println(e.getStackTrace());
 			displaySqlErrors(e);
 			return false;
 		}
@@ -141,7 +138,13 @@ private UserDAO(){}
 		java.sql.Statement statement=null;
 		try {
 
-			this.connection=DBManager.getInstance().getConnection();
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			statement = connection.createStatement();
 			rs = statement.executeQuery(String.format("select * from users where email = '%s' and user_password = '%s'",email,password));
 			
@@ -160,10 +163,7 @@ private UserDAO(){}
 				 System.out.println(rs.toString());
 				 User user = new User(name,phone,password1,email1,location);
 				 
-				 return user;
-				
-			
-			
+				 return user;			
 			
 		} catch (SQLException e) {
 		displaySqlErrors(e);

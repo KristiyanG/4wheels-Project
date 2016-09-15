@@ -13,13 +13,14 @@
 <body>
 
   <div id="_1">
-    <form id="_2" role="form">
+  
+    <form id="_2" name="LoginForm" method="POST" action="../LoginServlet" role="form">
 
       <div id="_3">
 
         <div id="_4" class="nm-label">
           <span id="_5">
-            Horizontal form<br/>
+            Login<br/>
         </span>
         </div>
 
@@ -41,13 +42,8 @@
             Password<br/>
         </span>
       </div>
-      <input type="text" id="_13" placeholder="Email" class="form-control" />
-      <input type="text" id="_14" placeholder="Password" class="form-control" />
-      <div class="checkbox" id="_15">
-        <label id="_16">
-          <input type="checkbox" checked />Remember me
-        </label>
-      </div>
+      <input type="text" name="Email" id="_13" placeholder="Email" class="form-control" />
+      <input type="password" name="Password" id="_14" placeholder="Password" class="form-control" />
       <button id="_17" data-pagelink="a94616db-cbb5-a44c-04e5-687c8cdab037" class="btn btn-default">
         Sign in
 

@@ -8,11 +8,27 @@
   <link rel="stylesheet" href="../common-files/css/fonts-v3.css">
   <link rel="stylesheet" href="../common-files/css/base-v4.css">
   <link rel="stylesheet" href="../styles/properties-658144f9-0c3e-8baf-fca5-a1e02fd800fb.css">
+  
+  <style>
+  .ddl{
+  	top: 704px;
+  	left: 38px;
+  	width: 220px;
+  	height: 30px;
+  	border-radius: 5px;
+  	border: 1px solid;
+  }
+  
+  </style>
+  
 </head>
+
 
 <body>
 
   <div id="_32">
+
+<form name="registerForm" method="POST" action="../RegisterServlet">
 
     <i id="_33">
         
@@ -26,7 +42,7 @@
         </span>
       </div>
     </div>
-    <input type="text" id="_37" placeholder="" class="form-control" />
+    <input type="text" id="_37" name="FullName" placeholder="Name" class="form-control" />
 
     <div id="_38">
 
@@ -36,7 +52,7 @@
         </span>
       </div>
     </div>
-    <input type="text" id="_41" placeholder="" class="form-control" />
+    <input type="text" id="_41" name="EmailAddres" placeholder="Email" class="form-control" />
 
     <div id="_42">
 
@@ -46,8 +62,8 @@
         </span>
       </div>
     </div>
-    <input type="text" id="_45" placeholder="" class="form-control" />
-    <input type="text" id="_46" placeholder="" class="form-control" />
+    <input type="text" id="_45" name="ConfirmPassword" placeholder="ConfirmPassword" class="form-control" />
+    <input type="text" id="_46" name="Password" placeholder="Password" class="form-control" />
 
     <div id="_47">
 
@@ -66,49 +82,18 @@
         </span>
       </div>
     </div>
+    
+    <select class="ddl" name="Location" id="converted_dropdown_2">
+	  <option value="Sofia">Sofia</option>
+	  <option value="Plovdiv">Plovdiv</option>
+	  <option value="Varna">Varna</option>
+	  <option value="Burgas">Burgas</option>
+	  <option value="Stara Zagora">Stara Zagora</option>
+	  <option value="Pleven">Pleven</option>
+	  <option value="Veliko Turnovo">Veliko Turnovo</option>
+	  <option value="Karlovo">Karlovo</option>
+	</select>
 
-    <div id="_53" class="btn-group">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="_54">
-        All Locations <span class="caret"></span>
-      </button>
-      <ul id="_55" class="dropdown-menu" role="menu">
-        <li href="#">
-
-          <div id="_56" class="nm-label">
-            <a id="_57" href="#">
-            Action<br/>
-        </a>
-          </div>
-        </li>
-        <li href="#">
-
-          <div id="_58" class="nm-label">
-            <a id="_59" href="#">
-            Another action<br/>
-        </a>
-          </div>
-        </li>
-        <li href="#">
-
-          <div id="_60" class="nm-label">
-            <a id="_61" href="#">
-            Something else here<br/>
-        </a>
-          </div>
-        </li>
-        <li class="divider">
-
-        </li>
-        <li href="#">
-
-          <div id="_62" class="nm-label">
-            <a id="_63" href="#">
-            Separated link<br/>
-        </a>
-          </div>
-        </li>
-      </ul>
-    </div>
     <button id="_64" data-pagelink="Login" class="btn btn-default">
       Register
 
@@ -146,7 +131,7 @@
         </a>
       </div>
     </div>
-    <input type="text" id="_76" placeholder="" class="form-control" />
+    <input type="text" id="_76" name="PhoneNumber" placeholder="Phone" class="form-control" />
 
     <div id="_77">
 
@@ -168,6 +153,7 @@
             Profile Registration<br/>
         </h2>
     </div>
+    </form>
 
     <i id="_85">
         T
