@@ -1,5 +1,6 @@
 package busynesLogic.models;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -23,6 +24,7 @@ class DBManager {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	synchronized static DBManager getInstance(){
@@ -35,7 +37,6 @@ class DBManager {
 	Connection getConnection() {
 		try {
 			connection = DriverManager.getConnection(URL, DB_USERNAME, DB_PASSWORD);
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

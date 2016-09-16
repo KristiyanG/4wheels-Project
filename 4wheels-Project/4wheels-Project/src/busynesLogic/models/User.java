@@ -10,43 +10,29 @@ import busynesLogic.interfaces.Vehicle;
 
 public class User {
 
-	
 	private String name;
 	private String phone;
 	private String password;
-	private int rating;
+	private double rating;
 	private String email;
 	private String location;
 	private int votes;
 
 	
-	
-	public User(String name, String phone, String password, String email,
-			String location) {
-		super();
+	public User(String name, String phone, String password, String email, String location) {
 		this.name = name;
 		this.phone = phone;
 		this.password = password;
 		this.email = email;
 		this.location = location;
-		this.rating=0;
+		this.rating = 0;
 	}
 
-	public User(String name, String password, String password2, String phone,
-			String email, String location) throws InvalidPasswordException,UserException {
-		
-		setName(name);
-		setEmail(email);
-		if (!password.equals(password2)) {
-			throw new InvalidPasswordException("You enter different password");
-		}
-		setPassword(password);
-		setPhone(phone);
-		
-		setLocation(location);
-		this.votes=0;
-		setRating(rating);
+	public User(String name, String phone, String password, String email, String location,double rating) {
+		this(name,phone,password,email,location);
+		this.rating = rating;
 	}
+	
 
 	public String getPhone() {
 		return phone;

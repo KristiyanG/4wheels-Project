@@ -1,7 +1,0 @@
-INDEX VERSION 1.3+C:\Users\Kristian\4wheels-Project\4wheels-Project\4wheels-Project\4wheelsWebProject\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-390717332.index
-920084159.index
-1889377398.index
-2464153594.index
-3746074786.index
-1132913418.index

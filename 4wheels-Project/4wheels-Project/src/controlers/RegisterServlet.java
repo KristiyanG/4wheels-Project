@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import busynesLogic.containers.UserContainer;
 import busynesLogic.exceptions.InvalidPasswordException;
@@ -44,10 +45,17 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			registerUser(name, password, confirmPass, phoneNumber, email, location);
 			page = "pages/Profile.html";
+			
+			HttpSession ses = request.getSession();
+			ses.setAttribute("email",email);
+			
 		} catch (InvalidPasswordException e) {
 			page = "pages/RegisterProfile.html";
+			System.out.println("Greshka v parolata");
+			System.out.println(e.getMessage());
 		} catch (UserException e) {
 			page = "pages/RegisterProfile.html";
+			System.out.println("Greshka v usera");
 		}
 
 		response.sendRedirect(page);
@@ -55,11 +63,16 @@ public class RegisterServlet extends HttpServlet {
 
 	private void registerUser(String name, String password, String password2, String phone, String email,
 			String location) throws InvalidPasswordException, UserException {
-		User user = new User(name, password, password2, phone, email, location);
-		System.out.println("registrirah go");
-
+		
+		if(!password.equals(password2)){
+			throw new InvalidPasswordException("Parolite ne suvpadat");
+		}
+		
+		User user = new User(name,  phone, password, email, location);
 		UserDAO userCo = UserDAO.getInstance();
-		System.out.println(userCo.insertUser(user));
+		if(!userCo.insertUser(user)){
+			throw new UserException("User with this email already exists.");
+		}
 	}
 
 }

@@ -17,7 +17,7 @@ public class UserDAO {
 	private  Connection connection;
 	private static UserDAO instance;
 	private Map<String, User> users = new HashMap<>();
-private UserDAO(){}
+	private UserDAO(){}
 	
 	public synchronized static UserDAO getInstance(){
 		if(instance == null){
@@ -28,21 +28,23 @@ private UserDAO(){}
 
 	private  Map<String, User> getAllUsers() throws InvalidPasswordException, UserException{
 		Map<String, User> users = new HashMap<>();//email -> user
-//		location,name,rating ,email,user_password,phone
+
 		try {
-			this.connection=DBManager.getInstance().getConnection();
+			this.connection = DBManager.getInstance().getConnection();
 			Statement st = DBManager.getInstance().getConnection().createStatement();
-			ResultSet resultSet = st.executeQuery("SELECT location, name, rating, email, user_password, phone FROM users;");
+			ResultSet resultSet = st.executeQuery("SELECT location, name,rating, email, user_password, phone FROM users;");
 			while(resultSet.next()){
-				users.put(resultSet.getString("email"),new User(resultSet.getString("location"),
+				users.put(resultSet.getString("email"),new User(
 									resultSet.getString("name"),
-									resultSet.getString("rating"),
-									resultSet.getString("email"),
+									resultSet.getString("phone"),
 									resultSet.getString("user_password"),
-									resultSet.getString("phone")
+									resultSet.getString("email"),
+									resultSet.getString("location"),
+									resultSet.getDouble("rating")
 									));
 			}
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 			System.out.println("Oops, cannot make statement.");
 			return users;
 		}
@@ -50,12 +52,12 @@ private UserDAO(){}
 		return users;
 	}
 	
-
 	public boolean insertUser(User user) throws InvalidPasswordException, UserException {
 		if (user == null) {
 			return false;
 		}
 		if(users.containsKey(user.getEmail())){
+			System.out.println("User alraady exists ");
 			return false;
 		}
 		users.put(user.getEmail(), user);
@@ -71,6 +73,7 @@ private UserDAO(){}
 			ResultSet rs = statement.executeQuery(String.format(
 					"SELECT email FROM users WHERE email = '%s'",
 					user.getEmail()));
+			System.out.println(user.getEmail());
 			
 			if (!rs.next()) {
 				//TODO 
@@ -81,6 +84,7 @@ private UserDAO(){}
 										user.getPassword(), user.getEmail(),
 										user.getPhone()));
 				getAllUsers().put(user.getEmail(),user);
+				System.out.println("Dovaven v db ");
 				rs.close();
 				statement.close();
 				connection.close();
@@ -99,38 +103,12 @@ private UserDAO(){}
 		}
 	}
 
-	public String registerUser(String name, String password, String password2,
-			String phone, String email, String location) {
-		User user = null;
-		try {
-			try {
-				user = new User(name, password, password2, phone, email,
-						location);
-			} catch (UserException e) {
-				System.out.println(e.getMessage());
-			}
-		} catch (InvalidPasswordException e) {
-
-			return e.getMessage();
-		}
-		try {
-			insertUser(user);
-		} catch (InvalidPasswordException | UserException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return "Wellcome " + name + "!";
-	}
-
 	public User getUser(String email,String password) {
 		User u = users.get(email);
 		if(u!=null){
 			return u;
 		}
 		return searchInDB(email, password);
-		
-
 	}
 
 	private User searchInDB(String email, String password) {
@@ -138,13 +116,7 @@ private UserDAO(){}
 		java.sql.Statement statement=null;
 		try {
 
-			try {
-				Class.forName("com.mysql.jdbc.Driver");
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			this.connection = DBManager.getInstance().getConnection();
 			statement = connection.createStatement();
 			rs = statement.executeQuery(String.format("select * from users where email = '%s' and user_password = '%s'",email,password));
 			
@@ -153,8 +125,6 @@ private UserDAO(){}
 			return null;
 			}
 			
-		    
-//			location,name,rating ,email,user_password,phone
 				 String name = rs.getString("name");
 				 String location = rs.getString("location");
 				 String email1 = rs.getString("email");
@@ -184,7 +154,7 @@ private UserDAO(){}
 			
 		}
 	}
-
+//LOgin
 	public boolean validateUser(String email, String password) {
 
 		if(users.containsKey(email)){
@@ -230,6 +200,5 @@ private UserDAO(){}
 		System.out.println("SQLException: " + e.getMessage());
 		System.out.println("SQLState: " + e.getSQLState());
 		System.out.println("Vendor error: " + e.getErrorCode());
-
 	}
 }
