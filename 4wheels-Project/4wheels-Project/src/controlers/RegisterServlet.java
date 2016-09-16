@@ -47,7 +47,7 @@ public class RegisterServlet extends HttpServlet {
 			page = "pages/Profile.html";
 			
 			HttpSession ses = request.getSession();
-			ses.setAttribute("email",email);
+			ses.setAttribute("email", email);
 			
 		} catch (InvalidPasswordException e) {
 			page = "pages/RegisterProfile.html";

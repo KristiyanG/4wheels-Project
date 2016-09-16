@@ -45,6 +45,10 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
+	
+	public boolean isValidPassword(String password){
+		return this.password.equals(password);
+	}
 
 	public void setPassword(String password) throws InvalidPasswordException {
 		if(password.length()<4){
@@ -133,7 +137,7 @@ public class User {
 		return this.name;
 	}
 	public static boolean isValidEmail(String enteredEmail){
-        String EMAIL_REGIX = "^[\\\\w!#$%&’*+/=?`{|}~^-]+(?:\\\\.[\\\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,6}$";
+        String EMAIL_REGIX = "^[\\\\w!#$%&ï¿½*+/=?`{|}~^-]+(?:\\\\.[\\\\w!#$%&ï¿½*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,6}$";
         Pattern pattern = Pattern.compile(EMAIL_REGIX);
         Matcher matcher = pattern.matcher(enteredEmail);
         return ((!enteredEmail.isEmpty()) && (enteredEmail!=null) && (matcher.matches()));

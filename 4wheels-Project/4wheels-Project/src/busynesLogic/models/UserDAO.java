@@ -26,6 +26,23 @@ public class UserDAO {
 		return instance;
 	}
 
+	public void deleteUser(String email){
+		this.connection=DBManager.getInstance().getConnection();
+		String sql="Delete from users where email = '?';";
+		try {
+			String insertSQL = "delete  from users where email = ?"; 
+			 PreparedStatement stmt =
+					 connection.prepareStatement(insertSQL);
+				stmt.setString(1, email);
+				stmt.executeUpdate();
+			users.remove(getUser(email));
+			System.out.println("User was deleted ! ");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	private  Map<String, User> getAllUsers() throws InvalidPasswordException, UserException{
 		Map<String, User> users = new HashMap<>();//email -> user
 
@@ -103,7 +120,7 @@ public class UserDAO {
 		}
 	}
 
-	public User getUser(String email,String password) {
+	public User getUser(String email, String password) {
 		User u = users.get(email);
 		if(u!=null){
 			return u;
@@ -111,6 +128,11 @@ public class UserDAO {
 		return searchInDB(email, password);
 	}
 
+	public User getUser(String email){
+		User currentUser = users.get(email);		
+		return currentUser;
+	}
+	
 	private User searchInDB(String email, String password) {
 		ResultSet rs = null;
 		java.sql.Statement statement=null;
@@ -200,5 +222,33 @@ public class UserDAO {
 		System.out.println("SQLException: " + e.getMessage());
 		System.out.println("SQLState: " + e.getSQLState());
 		System.out.println("Vendor error: " + e.getErrorCode());
+	}
+
+	public boolean updateUser(String name, String newPass, String location,String email) {
+		this.connection=DBManager.getInstance().getConnection();
+		try {
+			PreparedStatement stm =connection.prepareStatement("Update users Set user_password = ?,name=?,location =? where email=?;");
+			stm.setString(1, newPass);
+			stm.setString(2, name);
+			stm.setString(3, location);
+			stm.setString(4, email);
+			stm.executeUpdate();
+			try {
+				getAllUsers();
+			} catch (InvalidPasswordException e) {
+				e.printStackTrace();
+				return false;
+			} catch (UserException e) {
+				e.printStackTrace();
+				return false;
+			}
+			System.out.println("User updated !");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+		
 	}
 }

@@ -1,15 +1,13 @@
 package controlers;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import busynesLogic.models.User;
 import busynesLogic.models.UserDAO;
@@ -33,14 +31,17 @@ public class LoginServlet extends HttpServlet {
 		UserDAO logIn = UserDAO.getInstance();
 		System.out.println(email + "--- "+ password);
 		
-		User user = logIn.getUser(email,password);
+		User user = logIn.getUser(email, password);
 	
 		if(user != null){
-			response.sendRedirect("pages/Profile.html");
+			HttpSession ses = request.getSession();
+			ses.setAttribute("user", user);
+			response.sendRedirect("jsp/ProfilePage.jsp");
 		}
 		else{
 			response.sendRedirect("pages/Login.html");
 		}
+		
 	}
 
 }
