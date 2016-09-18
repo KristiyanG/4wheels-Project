@@ -91,14 +91,6 @@ public class User {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}//TODO setRating up or down
-
-	public Vehicle addCar(String make, String model, int year, int rating,
-			double price, boolean xenon, boolean abs){
-		Vehicle car = new Car(this,make, model, year,
-			 price, xenon, abs);
-		return car;
-		
-	}
 	
 	public Service addService(String name, String location, String phone){
 		Service service=new Service(name, this, location, phone);

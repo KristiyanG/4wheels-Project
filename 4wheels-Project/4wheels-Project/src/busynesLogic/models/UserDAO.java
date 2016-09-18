@@ -1,6 +1,5 @@
 package busynesLogic.models;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +16,7 @@ public class UserDAO {
 	private  Connection connection;
 	private static UserDAO instance;
 	private Map<String, User> users = new HashMap<>();
+	
 	private UserDAO(){}
 	
 	public synchronized static UserDAO getInstance(){
@@ -103,7 +103,7 @@ public class UserDAO {
 		}
 	}
 
-	public User getUser(String email,String password) {
+	public User getUser(String email, String password) {
 		User u = users.get(email);
 		if(u!=null){
 			return u;
@@ -111,6 +111,11 @@ public class UserDAO {
 		return searchInDB(email, password);
 	}
 
+	public User getUser(String email){
+		User currentUser = users.get(email);		
+		return currentUser;
+	}
+	
 	private User searchInDB(String email, String password) {
 		ResultSet rs = null;
 		java.sql.Statement statement=null;
