@@ -16,6 +16,35 @@
 	border: 1px solid;
 }
 </style>
+ <script>
+        function makeFullScreen() {
+         var divObj = document.getElementById("theImage");
+       //Use the specification method before using prefixed versions
+      if (divObj.requestFullscreen) {
+        divObj.requestFullscreen();
+      }
+      else if (divObj.msRequestFullscreen) {
+        divObj.msRequestFullscreen();            
+      }
+      else if (divObj.mozRequestFullScreen) {
+        divObj.mozRequestFullScreen();
+      }
+      else if (divObj.webkitRequestFullscreen) {
+        divObj.webkitRequestFullscreen();
+      } else {
+        console.log("Fullscreen API is not supported");
+      } 
+
+    }
+     </script>
+<style>
+.picture {
+	top: 50px;
+	left: 5px;
+	width: 40px;
+	height: 40px;
+}
+</style>
 <style>
 .ddl2 {
 	top: 230px;
@@ -38,41 +67,38 @@
 
 		<div id="_1163">
 
-			<div id="_1164" data-pagelink="HomePageFindCar" class="nm-label">
-				<span id="_1165"> Home<br />
-				</span>
-			</div>
-
-			<div id="_1166" data-pagelink="0643bef3-8d19-a14a-5405-03ab8048f78e"
-				class="nm-label">
-				<span id="_1167"> Add Car<br />
-				</span>
-			</div>
-
-			<div id="_1168" data-pagelink="53df4c96-963c-9ce0-edb9-83fdf279daf5"
-				class="nm-label">
-				<span id="_1169"> Add Service<br />
-				</span>
-			</div>
-
-			<div id="_1170" data-pagelink="c9679362-2c21-98bd-2957-685f655fd083"
-				class="nm-label">
-				<span id="_1171"> My Cars<br />
-				</span>
-			</div>
-
-			<div id="_1172" data-pagelink="399e5e5b-29f7-9aac-9852-3183820f47bf"
-				class="nm-label">
-				<a id="_1173" href="#"> My Search<br />
+			<div id="_1164"  class="nm-label">
+				<a  href="HomePageFindCar.jsp"> Home <br />
 				</a>
 			</div>
 
-			<a id="_1174" data-pagelink="HomePageFindCar" class="navbar-brand"
-				href="#">Log out</a>
+			<div id="_1166" 
+				class="nm-label">
+				<a  href="AddCarPage.jsp"> Register Car<br />
+				</a>
+			</div>
+
+			<div id="_1168" 
+				class="nm-label">
+				<a  href="RegisterService.jsp"> Register Service<br />
+				</a>
+			</div>
+
+			<div id="_1172"
+				class="nm-label">
+				<span id="_1173"> My Cars<br />
+				</span>
+			</div>
+
+			
+
+			<a id="_1174"  class="navbar-brand" 
+				href="HomePageFindCar.jsp">Log out</a>
 
 		</div>
-	
-
+	<div class="picture">
+			<img id="theImage" src="../PictureServlet"  height="150" width="150" onClick="makeFullScreen()" ></div>
+			 
 		<div id="_1176" class="nm-label">
 			<h1 id="_1177">
 				Edit Profile<br />
@@ -124,8 +150,10 @@
 				<h3 id="_1194">
 					<%
 						User u = (User) (session.getAttribute("user"));
+					if(u!=null){
 					%>
 					<%=u.getEmail()%>
+					<%} %>
 					<br />
 				</h3>
 			</div>
@@ -137,9 +165,7 @@
 					%>
 					<%=session.getAttribute("passwordErr")%>
 					<br />
-					<%
-						}
-					%>
+					<%} %>
 				</h3>
 			</div>
 
@@ -159,7 +185,7 @@
 				class="form-control" /> <input type="password" id="_1219"
 				name=repeatPass " placeholder="repeat password" class="form-control" />
 			<input type="text" id="_1220" name="username"
-				placeholder=<%=u.getName()%> class="form-control" />
+				placeholder="Name" class="form-control" />
 
 			<button id="_1222"
 				data-pagelink="a94616db-cbb5-a44c-04e5-687c8cdab037"

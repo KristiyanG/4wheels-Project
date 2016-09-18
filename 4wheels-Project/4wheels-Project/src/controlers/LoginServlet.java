@@ -29,7 +29,6 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("Password");
 		
 		UserDAO logIn = UserDAO.getInstance();
-		System.out.println(email + "--- "+ password);
 		
 		User user=null;
 		try {
@@ -41,9 +40,7 @@ public class LoginServlet extends HttpServlet {
 	
 		if(user != null){
 			HttpSession ses = request.getSession();
-			System.out.println("User pic "+ user.getProfilePic());
 			ses.setAttribute("user", user);
-			System.out.println("Rating" +user.getRating());
 			response.sendRedirect("jsp/ProfilePage.jsp");
 		}
 		else{

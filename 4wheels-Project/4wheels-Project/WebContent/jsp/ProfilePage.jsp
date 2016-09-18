@@ -10,6 +10,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script>
+        function makeFullScreen() {
+         var divObj = document.getElementById("theImage");
+       //Use the specification method before using prefixed versions
+      if (divObj.requestFullscreen) {
+        divObj.requestFullscreen();
+      }
+      else if (divObj.msRequestFullscreen) {
+        divObj.msRequestFullscreen();            
+      }
+      else if (divObj.mozRequestFullScreen) {
+        divObj.mozRequestFullScreen();
+      }
+      else if (divObj.webkitRequestFullscreen) {
+        divObj.webkitRequestFullscreen();
+      } else {
+        console.log("Fullscreen API is not supported");
+      } 
+
+    }
+     </script>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -61,8 +82,8 @@
 
 		</div>
 		<div id="_228">
-			<img src="../PictureServlet"  height="150" width="150"></div>
 			
+			<img id="theImage" src="../PictureServlet"  height="150" width="150" onClick="makeFullScreen()" ></div>
 
 		<div id="_229" data-pagelink="ViewCar">
 
@@ -115,7 +136,7 @@
 			<a id="_252" href="../jsp/EditProfile.jsp"> Edit Profile<br />
 			</a>
 		</div>
-
+<% if(u!=null){%>
 		<div id="_253" data-pagelink="b7b0732b-5938-8ca4-6173-441f1ef0bd01"
 			class="nm-label">
 			<h3 id="_254">
@@ -139,7 +160,7 @@
 				<br />
 			</h3>
 		</div>
-
+<%} %>
 		<div id="_261">
 			<svg id="_262"> <line id="_263" x1="0" x2="961" y1="" y2="0" />
 			</svg>

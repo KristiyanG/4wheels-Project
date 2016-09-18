@@ -46,9 +46,11 @@ public class UserDAO {
 		}
 	}
 
-	public TreeSet<User> sortedUser() {
-
-		TreeSet<User> sortedUsers = new TreeSet<User>((v1, v2) -> {
+	public TreeSet<User> sortedUser(String criteria) {
+		TreeSet<User> sortedUsers=null;
+		
+		if(criteria.equals("rating")){
+		sortedUsers = new TreeSet<User>((v1, v2) -> {
 			if (v1.getRating() > v2.getRating()) {
 				return -1;
 			}
@@ -65,7 +67,29 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return sortedUsers;
+		}
+		else {
+			sortedUsers = new TreeSet<User>((v1, v2) ->{
+				String user1 =v1.getName().toString();
+				String user2 =v2.getName().toString();
+				if((user1.compareTo(user2)==0)){
+					return v1.getEmail().compareTo(v2.getEmail());
+				}
+				return user1.compareTo(user2);
+			} );
+			
+			
 
+			try {
+				sortedUsers.addAll(getAllUsers().values());
+			} catch (InvalidPasswordException | UserException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return sortedUsers;
+		}
+		
+		
 	}
 
 	private Map<String, User> getAllUsers() throws InvalidPasswordException, UserException {
@@ -83,13 +107,13 @@ public class UserDAO {
 						new User(resultSet.getString("name"), resultSet.getString("phone"),
 								resultSet.getString("user_password"), resultSet.getString("email"),
 								resultSet.getString("location"), resultSet.getDouble("rating"),resultSet.getString("picture")));
-				System.out.println(resultSet.getDouble("rating"));
+				
 			}
 		} catch (SQLException e) {
 			System.out.println("Oops, cannot make statement.");
 			return users;
 		}
-		System.out.println("Users loaded successfully");
+	
 
 		return users;
 	}
@@ -99,7 +123,7 @@ public class UserDAO {
 			return false;
 		}
 		if (users.containsKey(user.getEmail())) {
-			System.out.println("User alraady exists ");
+			
 			return false;
 		}
 		users.put(user.getEmail(), user);
@@ -272,5 +296,45 @@ public class UserDAO {
 		}
 		return true;
 
+	}
+	public void updateUserRating(String email,String rating){
+		this.connection = DBManager.getInstance().getConnection();
+		System.out.println("Rating" + rating);
+		try {
+			double convertRate=1;
+			switch (rating) {
+			case "1":convertRate=1;
+				break;
+			case "2":convertRate=2;
+			break;
+			
+			case "3":convertRate=3;
+			break;
+			case "4":convertRate=4;
+			break;
+			case "5":convertRate=5;
+			break;
+				
+			}
+			PreparedStatement stm = connection
+					.prepareStatement("Update users Set rating=? where email=?;");
+			stm.setDouble(1, convertRate);
+			stm.setString(2, email);
+			stm.executeUpdate();
+			try {
+				getAllUsers();
+			} catch (InvalidPasswordException e) {
+				e.printStackTrace();
+				return ;
+			} catch (UserException e) {
+				e.printStackTrace();
+				return;
+			}
+			System.out.println("User updated !");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
+		
 	}
 }

@@ -74,40 +74,40 @@
     </form>
 
     <i id="_18"></i>
-    <button id="_19" data-pagelink="RegisterProfile" class="btn btn-default">
-      Create new Account
+    <button id="_19" class="btn btn-default"><a href="RegisterProfile.jsp">Create new Account</a>
+  
 
     </button>
 
    
     <div id="_21">
 
-      <div id="_22" data-pagelink="HomePageFindCar" class="nm-label">
-        <span id="_23">
-            Home<br/>
+      <div id="_22"  class="nm-label">
+        <span id="_23"><a href="HomePageFindCar.jsp">Home</a>
+            <br/>
         </span>
       </div>
 
-      <div id="_24" data-pagelink="TopCars" class="nm-label">
+      <div id="_24"  class="nm-label">
         <span id="_25">
             Cars<br/>
         </span>
       </div>
 
-      <div id="_26" data-pagelink="TopSellers" class="nm-label">
+      <div id="_26" class="nm-label">
         <span id="_27">
-            Sellers<br/>
+            <a href="TopSeller.jsp">Sellers</a><br/>
         </span>
       </div>
 
-      <div id="_28" data-pagelink="TopServices" class="nm-label">
+      <div id="_28" class="nm-label">
         <span id="_29">
-            Auto Services<br/>
+            <a href="TopService.jsp">Auto Services</a><br/><br/>
         </span>
       </div>
 
-      <div id="_30" data-pagelink="About" class="nm-label">
-        <a id="_31" href="#">
+      <div id="_30"  class="nm-label">
+        <a id="_31" href="../pages/About.html">
             About<br/>
         </a>
       </div>

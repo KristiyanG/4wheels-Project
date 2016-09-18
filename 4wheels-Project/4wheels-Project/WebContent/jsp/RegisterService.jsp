@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ page import="busynesLogic.*"%>
+	<%@page import="busynesLogic.models.User"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -28,40 +30,44 @@
 			action="../RegisterServiceServlet">
 			<div id="_579">
 
-				<div id="_580" data-pagelink="HomePageFindCar" class="nm-label">
-					<span id="_581"> Home<br />
-					</span>
-				</div>
+				
+      <div id="_580" data-pagelink="HomePageFindCar" class="nm-label">
+        <span id="_581">
+           <a href="HomePageFindCar.jsp">Home</a> <br/>
+        </span>
+      </div>
 
-				<div id="_582" data-pagelink="0643bef3-8d19-a14a-5405-03ab8048f78e"
-					class="nm-label">
-					<span id="_583"> Add Car<br />
-					</span>
-				</div>
+      <div id="_582" data-pagelink="0643bef3-8d19-a14a-5405-03ab8048f78e" class="nm-label">
+        <span id="_583"><a href="AddCarPage.jsp">Add Car</a>
+            <br/>
+        </span>
+      </div>
 
-				<div id="_584" data-pagelink="53df4c96-963c-9ce0-edb9-83fdf279daf5"
-					class="nm-label">
-					<span id="_585"> Add Service<br />
-					</span>
-				</div>
+      <div id="_584" data-pagelink="53df4c96-963c-9ce0-edb9-83fdf279daf5" class="nm-label">
+        <span id="_585">
+           <a href="RegisterService.jsp">Add Service</a><br/>
+        </span>
+      </div>
 
-				<div id="_586" data-pagelink="c9679362-2c21-98bd-2957-685f655fd083"
-					class="nm-label">
-					<span id="_587"> My Cars<br />
-					</span>
-				</div>
+      <div id="_586" class="nm-label">
+        
+            My Cars<br/>
+        
+      </div>
 
-				<div id="_588" data-pagelink="399e5e5b-29f7-9aac-9852-3183820f47bf"
-					class="nm-label">
-					<a id="_589" href="#"> My Service<br />
-					</a>
-				</div>
+      <div id="_588" data-pagelink="399e5e5b-29f7-9aac-9852-3183820f47bf" class="nm-label">
+        <a id="_589" href="TopService.jsp">
+          Auto Service<br/>
+        </a>
+      </div>
 
-				<a id="_590" data-pagelink="HomePageFindCar" class="navbar-brand"
-					href="#">Log out</a>
+				<a id="_590" class="navbar-brand"
+					href="HomePageFindCar.jsp">Log out</a>
 			</div>
 
-			<i id="_591">  </i> <i id="_592">  </i> <input type="text"
+			
+			
+			 <input type="text"
 				name="serviceName" id="_593" placeholder="" class="form-control" />
 
 

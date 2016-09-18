@@ -80,7 +80,6 @@ public class User {
 	}
 
 	public void setEmail(String email) throws UserException {
-		System.out.println("EMail valide "+ isValidEmail(email));
 		if(!isValidEmail(email)){ 
 			throw new UserException("The email address is not valid");
 		}
@@ -115,13 +114,7 @@ public class User {
 		this.rating = rating;
 	}//TODO setRating up or down
 
-	public Vehicle addCar(String make, String model, int year, int rating,
-			double price, boolean xenon, boolean abs){
-		Vehicle car = new Car(this,make, model, year,
-			 price, xenon, abs);
-		return car;
-		
-	}
+	
 	
 	public Service addService(String name, String location, String phone){
 		Service service=new Service(name, email, location, phone);
