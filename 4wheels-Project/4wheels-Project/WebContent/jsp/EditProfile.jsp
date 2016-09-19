@@ -71,7 +71,8 @@
 				href="#">Log out</a>
 
 		</div>
-	
+
+		<i id="_1175">  </i>
 
 		<div id="_1176" class="nm-label">
 			<h1 id="_1177">

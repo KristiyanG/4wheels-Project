@@ -5,8 +5,6 @@
 
 
 
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,10 +17,8 @@
 <link rel="stylesheet" href="../common-files/css/base-v4.css">
 <link rel="stylesheet"
 	href="../styles/properties-658144f9-0c3e-8baf-fca5-a1e02fd800fb.css">
-	<%
-					User u = (User) (session.getAttribute("user"));
-				%>
-<title>Profile Page</title>
+
+<title>Insert title here</title>
 </head>
 <body>
 	<div id="_215">
@@ -30,18 +26,24 @@
 		<div id="_216">
 
 			<div id="_217" data-pagelink="HomePageFindCar" class="nm-label">
-				<a href="../pages/HomePageFindCar.html"> Home</a>
+				<span id="_218"> Home<br />
 				</span>
 			</div>
 
 			<div id="_219" data-pagelink="0643bef3-8d19-a14a-5405-03ab8048f78e"
 				class="nm-label">
+<<<<<<< HEAD
 				<a href="../jsp/AddCarPage.jsp"> Add Car</a>
+=======
+				<span id="_220"> Add Car<br />
+				</span>
+>>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
 			</div>
 
 			<div id="_221" data-pagelink="53df4c96-963c-9ce0-edb9-83fdf279daf5"
 				class="nm-label">
-				<a href="../jsp/RegisterService.jsp"> Register Service</a>
+				<span id="_222"> Add Service<br />
+				</span>
 			</div>
 
 			<div id="_223" data-pagelink="c9679362-2c21-98bd-2957-685f655fd083"
@@ -52,17 +54,16 @@
 
 			<div id="_225" data-pagelink="399e5e5b-29f7-9aac-9852-3183820f47bf"
 				class="nm-label">
-				<a id="_226" href="TopService.jsp"> Services<br />
+				<a id="_226" href="#"> My Services<br />
 				</a>
 			</div>
 
 			<a id="_227" data-pagelink="HomePageFindCar" class="navbar-brand"
-				href="../pages/HomePageFindCar.html">Log out</a>
+				href="#">Log out</a>
 
 		</div>
-		<div id="_228">
-			<img src="../PictureServlet"  height="150" width="150"></div>
-			
+
+		<i id="_228">  </i>
 
 		<div id="_229" data-pagelink="ViewCar">
 
@@ -93,49 +94,75 @@
 				</span>
 			</div>
 		</div>
-		<% if(u!=null){%>
-		<svg id="_241"> <path <%if(u.getRating()>-1) {%> id="_242"<%} %>
+		<svg id="_241"> <path id="_242"
 			d="M 15.000000000000002,0L 11.473288486245162,10.145898033750315L 0.7341522555726971,10.364745084375787L 9.293660902229078,16.854101966249683L 6.1832212156129,27.13525491562421L 14.999999999999998,21L 23.816778784387093,27.135254915624213L 20.706339097770922,16.854101966249686L 29.265847744427305,10.364745084375794L 18.52671151375484,10.145898033750317z" />
 		</svg>
-		<svg id="_243"> <path <%if(u.getRating()>1) {%> id="_242"<%} %>
+		<svg id="_243"> <path id="_244"
 			d="M 15.000000000000002,0L 11.473288486245162,10.145898033750315L 0.7341522555726971,10.364745084375787L 9.293660902229078,16.854101966249683L 6.1832212156129,27.13525491562421L 14.999999999999998,21L 23.816778784387093,27.135254915624213L 20.706339097770922,16.854101966249686L 29.265847744427305,10.364745084375794L 18.52671151375484,10.145898033750317z" />
 		</svg>
-		<svg id="_245"> <path <%if(u.getRating()>2) {%>id="_242"<%} %>
+		<svg id="_245"> <path id="_246"
 			d="M 15.000000000000002,0L 11.473288486245162,10.145898033750315L 0.7341522555726971,10.364745084375787L 9.293660902229078,16.854101966249683L 6.1832212156129,27.13525491562421L 14.999999999999998,21L 23.816778784387093,27.135254915624213L 20.706339097770922,16.854101966249686L 29.265847744427305,10.364745084375794L 18.52671151375484,10.145898033750317z" />
 		</svg>
-		<svg id="_247"> <path <%if(u.getRating()>3) {%>id="_242"<%} %>
+		<svg id="_247"> <path id="_248"
 			d="M 15.000000000000002,0L 11.473288486245162,10.145898033750315L 0.7341522555726971,10.364745084375787L 9.293660902229078,16.854101966249683L 6.1832212156129,27.13525491562421L 14.999999999999998,21L 23.816778784387093,27.135254915624213L 20.706339097770922,16.854101966249686L 29.265847744427305,10.364745084375794L 18.52671151375484,10.145898033750317z" />
 		</svg>
-		<svg id="_249"> <path <%if(u.getRating()>4) {%>id="_242"<%} %>
+		<svg id="_249"> <path id="_250"
 			d="M 15.000000000000002,0L 11.473288486245162,10.145898033750315L 0.7341522555726971,10.364745084375787L 9.293660902229078,16.854101966249683L 6.1832212156129,27.13525491562421L 14.999999999999998,21L 23.816778784387093,27.135254915624213L 20.706339097770922,16.854101966249686L 29.265847744427305,10.364745084375794L 18.52671151375484,10.145898033750317z" />
 		</svg>
-	<%} %>
+
 		<div id="_251" data-pagelink="91a7070b-f517-e79f-b0b7-54afc24f79fd"
 			class="nm-label">
-			<a id="_252" href="../jsp/EditProfile.jsp"> Edit Profile<br />
+<<<<<<< HEAD
+			<a id="_252" href="#"> Edit Profile<br />
+=======
+			<a href="../jsp/EditProfile.jsp"> Edit Profile</a><br />
+>>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
 			</a>
 		</div>
 
 		<div id="_253" data-pagelink="b7b0732b-5938-8ca4-6173-441f1ef0bd01"
 			class="nm-label">
 			<h3 id="_254">
-			
+<<<<<<< HEAD
+				<%
+					User u = (User) (session.getAttribute("user"));
+				%>
 				<%=u.getName()%>
 				<br />
+=======
+				Ne znam <br />
+			</h3>
+		</div>
+
+		<div id="_255" class="nm-label">
+			<h3 id="_256">
+				User<br />
+>>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
 			</h3>
 		</div>
 
 		<div id="_257" class="nm-label">
 			<h3 id="_258">
+<<<<<<< HEAD
 				Location:
 				<%=u.getLocation()%>
 				<br />
+=======
+				Location<br />
+>>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
 			</h3>
 		</div>
 
 		<div id="_259" class="nm-label">
 			<h3 id="_260">
+<<<<<<< HEAD
 				<%=u.getPhone()%>
+=======
+				<%
+					User u = (User) (session.getAttribute("user"));
+				%>
+				<%=u.getName()%>
+>>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
 				<br />
 			</h3>
 		</div>

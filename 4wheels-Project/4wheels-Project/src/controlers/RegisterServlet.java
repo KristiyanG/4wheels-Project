@@ -1,19 +1,13 @@
 package controlers;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 import busynesLogic.containers.UserContainer;
 import busynesLogic.exceptions.InvalidPasswordException;
@@ -23,10 +17,7 @@ import busynesLogic.models.UserDAO;
 
 
 @WebServlet("/RegisterServlet")
-@MultipartConfig
 public class RegisterServlet extends HttpServlet {
-
-	private static final double USER_RATING = 0;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -36,67 +27,51 @@ public class RegisterServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String name = request.getParameter("FullName");
 		String password = request.getParameter("Password");
 		String confirmPass = request.getParameter("ConfirmPassword");
 		String phoneNumber = request.getParameter("PhoneNumber");
 		String email = request.getParameter("EmailAddres");
 		String location = request.getParameter("Location");
-		Part profilePic = request.getPart("profilePic");
-		InputStream profilePicStream = profilePic.getInputStream();
-
+		
+		System.out.println(name + " " + password + " " + confirmPass + " " + phoneNumber +" " + email + " " + location);
 		
 		String page = null;
 		if (name == null || password == null || phoneNumber == null || confirmPass == null || email == null
 				|| location == null) {
-			request.getSession().setAttribute("registerErr", "You have empty field ! ");
-			page = "jsp/RegisterProfile.jsp";
+			page = "pages/Profile.html";
 		}
-		
-		if(page==null){
 		try {
-			registerUser(name, password, confirmPass, phoneNumber, email, location,profilePic,profilePicStream, request, response);
-			page = "jsp/ProfilePage.jsp";
+			registerUser(name, password, confirmPass, phoneNumber, email, location);
+			page = "pages/Profile.html";
+			
+			HttpSession ses = request.getSession();
+			ses.setAttribute("email", email);
 			
 		} catch (InvalidPasswordException e) {
-			request.getSession().setAttribute("registerErr",  e.getMessage());
-			page = "jsp/RegisterProfile.jsp";
+			page = "pages/RegisterProfile.html";
+			System.out.println("Greshka v parolata");
 			System.out.println(e.getMessage());
 		} catch (UserException e) {
-			request.getSession().setAttribute("registerErr", e.getMessage());
-			page = "jsp/RegisterProfile.jsp";;
+			page = "pages/RegisterProfile.html";
+			System.out.println("Greshka v usera");
 		}
-		}
+
 		response.sendRedirect(page);
 	}
 
 	private void registerUser(String name, String password, String password2, String phone, String email,
-			String location,Part profilePic,InputStream profilePicStream,HttpServletRequest request ,HttpServletResponse response) throws InvalidPasswordException, UserException, IOException, ServletException {
+			String location) throws InvalidPasswordException, UserException {
 		
 		if(!password.equals(password2)){
-			throw new InvalidPasswordException("Password is not correct ! ");
+			throw new InvalidPasswordException("Parolite ne suvpadat");
 		}
-		 String contentType = profilePic.getContentType().split("/")[1];
-		 
-		String fileFullName =email+"-profile-pic."+ contentType;
-		System.out.println(fileFullName);
-		User user = new User(name,  phone, password, email, location,USER_RATING,fileFullName);
-		UserDAO userCo = UserDAO.getInstance();
-		if(!userCo.insertUser(user,password)){
-			throw new UserException("User with this email already exists.");
-		}else{
-		File dir = new File("userProfilePics");
-		if(!dir.exists()){
-			dir.mkdir();
-		}
-		File profilePicFile = new File(dir, fileFullName);
-		System.out.println("Try to save file with name: " + profilePicFile.getName());
-		System.out.println("abs. path = " + profilePicFile.getAbsolutePath());
-		Files.copy(profilePicStream, profilePicFile.toPath());
-		user.setProfilePic(fileFullName);
 		
-
-		request.getSession().setAttribute("user", user);
+		User user = new User(name,  phone, password, email, location);
+		UserDAO userCo = UserDAO.getInstance();
+		if(!userCo.insertUser(user)){
+			throw new UserException("User with this email already exists.");
 		}
 	}
 
