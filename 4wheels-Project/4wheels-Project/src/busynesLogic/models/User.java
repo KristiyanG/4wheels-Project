@@ -62,7 +62,11 @@ public class User {
 	}
 
 	public void setEmail(String email) throws UserException {
+<<<<<<< HEAD
 		if(isValidEmail(email)){
+=======
+		if(!isValidEmail(email)){ 
+>>>>>>> 3fbe63ac5a887a32e26c5befd72a89166e76978b
 			throw new UserException("The email address is not valid");
 		}
 		this.email = email;
@@ -95,6 +99,11 @@ public class User {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}//TODO setRating up or down
+<<<<<<< HEAD
+=======
+
+	
+>>>>>>> 3fbe63ac5a887a32e26c5befd72a89166e76978b
 	
 	public Service addService(String name, String location, String phone){
 		Service service=new Service(name, this, location, phone);

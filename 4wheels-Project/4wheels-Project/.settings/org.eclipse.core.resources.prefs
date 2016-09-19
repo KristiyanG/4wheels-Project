@@ -3,5 +3,13 @@ eclipse.preferences.version=1
 encoding//WebContent/jsp/AddCarPage.jsp=UTF-8
 =======
 encoding//WebContent/jsp/EditProfile.jsp=UTF-8
+<<<<<<< HEAD
 >>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
 encoding//WebContent/jsp/ProfilePage.jsp=UTF-8
+=======
+encoding//WebContent/jsp/Login.jsp=UTF-8
+encoding//WebContent/jsp/RegisterService.jsp=UTF-8
+encoding//WebContent/jsp/TopService.jsp=UTF-8
+encoding//WebContent/jsp/ViewProfile.jsp=UTF-8
+encoding//WebContent/jsp/ViewService.jsp=UTF-8
+>>>>>>> 3fbe63ac5a887a32e26c5befd72a89166e76978b

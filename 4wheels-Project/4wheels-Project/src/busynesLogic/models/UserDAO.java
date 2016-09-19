@@ -42,13 +42,66 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
+<<<<<<< HEAD
 	
 	private  Map<String, User> getAllUsers() throws InvalidPasswordException, UserException{
 		Map<String, User> users = new HashMap<>();//email -> user
+=======
+
+	public TreeSet<User> sortedUser(String criteria) {
+		TreeSet<User> sortedUsers=null;
+		
+		if(criteria.equals("rating")){
+		sortedUsers = new TreeSet<User>((v1, v2) -> {
+			if (v1.getRating() > v2.getRating()) {
+				return -1;
+			}
+			if (v1.getRating() < v2.getRating()) {
+				return 1;
+			}
+			return v1.getEmail().compareTo(v2.getEmail());
+		});
+
+		try {
+			sortedUsers.addAll(getAllUsers().values());
+		} catch (InvalidPasswordException | UserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return sortedUsers;
+		}
+		else {
+			sortedUsers = new TreeSet<User>((v1, v2) ->{
+				String user1 =v1.getName().toString();
+				String user2 =v2.getName().toString();
+				if((user1.compareTo(user2)==0)){
+					return v1.getEmail().compareTo(v2.getEmail());
+				}
+				return user1.compareTo(user2);
+			} );
+			
+			
+
+			try {
+				sortedUsers.addAll(getAllUsers().values());
+			} catch (InvalidPasswordException | UserException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return sortedUsers;
+		}
+		
+		
+	}
+
+	private Map<String, User> getAllUsers() throws InvalidPasswordException, UserException {
+		this.users = new HashMap<>();// email -> user
+>>>>>>> 3fbe63ac5a887a32e26c5befd72a89166e76978b
 
 		try {
 			this.connection = DBManager.getInstance().getConnection();
 			Statement st = DBManager.getInstance().getConnection().createStatement();
+<<<<<<< HEAD
 			ResultSet resultSet = st.executeQuery("SELECT location, name,rating, email, user_password, phone FROM users;");
 			while(resultSet.next()){
 				users.put(resultSet.getString("email"),new User(
@@ -59,13 +112,29 @@ public class UserDAO {
 									resultSet.getString("location"),
 									resultSet.getDouble("rating")
 									));
+=======
+			ResultSet resultSet = st
+					.executeQuery("SELECT location, name,rating, email, user_password, phone,picture FROM users;");
+			while (resultSet.next()) {
+				
+				users.put(resultSet.getString("email"),
+						new User(resultSet.getString("name"), resultSet.getString("phone"),
+								resultSet.getString("user_password"), resultSet.getString("email"),
+								resultSet.getString("location"), resultSet.getDouble("rating"),resultSet.getString("picture")));
+				
+>>>>>>> 3fbe63ac5a887a32e26c5befd72a89166e76978b
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Oops, cannot make statement.");
 			return users;
 		}
+<<<<<<< HEAD
 		System.out.println("Users loaded successfully");
+=======
+	
+
+>>>>>>> 3fbe63ac5a887a32e26c5befd72a89166e76978b
 		return users;
 	}
 	
@@ -73,8 +142,13 @@ public class UserDAO {
 		if (user == null) {
 			return false;
 		}
+<<<<<<< HEAD
 		if(users.containsKey(user.getEmail())){
 			System.out.println("User alraady exists ");
+=======
+		if (users.containsKey(user.getEmail())) {
+			
+>>>>>>> 3fbe63ac5a887a32e26c5befd72a89166e76978b
 			return false;
 		}
 		users.put(user.getEmail(), user);
@@ -249,6 +323,46 @@ public class UserDAO {
 			return false;
 		}
 		return true;
+		
+	}
+	public void updateUserRating(String email,String rating){
+		this.connection = DBManager.getInstance().getConnection();
+		System.out.println("Rating" + rating);
+		try {
+			double convertRate=1;
+			switch (rating) {
+			case "1":convertRate=1;
+				break;
+			case "2":convertRate=2;
+			break;
+			
+			case "3":convertRate=3;
+			break;
+			case "4":convertRate=4;
+			break;
+			case "5":convertRate=5;
+			break;
+				
+			}
+			PreparedStatement stm = connection
+					.prepareStatement("Update users Set rating=? where email=?;");
+			stm.setDouble(1, convertRate);
+			stm.setString(2, email);
+			stm.executeUpdate();
+			try {
+				getAllUsers();
+			} catch (InvalidPasswordException e) {
+				e.printStackTrace();
+				return ;
+			} catch (UserException e) {
+				e.printStackTrace();
+				return;
+			}
+			System.out.println("User updated !");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
 		
 	}
 }

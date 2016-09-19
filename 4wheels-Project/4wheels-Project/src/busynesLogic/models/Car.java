@@ -468,4 +468,8 @@ public class Car implements Vehicle {
 		return 0;
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3fbe63ac5a887a32e26c5befd72a89166e76978b

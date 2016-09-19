@@ -29,7 +29,6 @@ public class LoginServlet extends HttpServlet {
 		
 		
 		UserDAO logIn = UserDAO.getInstance();
-		System.out.println(email + "--- "+ password);
 		
 		User user = logIn.getUser(email, password);
 	
