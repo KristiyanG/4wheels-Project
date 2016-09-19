@@ -4,6 +4,11 @@ import busynesLogic.interfaces.Vehicle;
 
 public class Car implements Vehicle {
 
+
+
+
+	private int id;
+	private String photo;
 	private String userEmail;
 	private String make;
 	private String model;
@@ -59,6 +64,33 @@ public class Car implements Vehicle {
 	private boolean xenonHeadlights;
 	private boolean tractionControl;
 	private boolean keylessEntry;
+
+	
+	
+	@Override
+	public String toString() {
+		return "Car [photo=" + photo + ", userEmail=" + userEmail + ", make=" + make + ", model=" + model + ", variant="
+				+ variant + ", fuel=" + fuel + ", vehicleType=" + vehicleType + ", transmision=" + transmision
+				+ ", year=" + year + ", kilometer=" + kilometer + ", price=" + price + ", power=" + power
+				+ ", location=" + location + ", auxiliaryHeating=" + auxiliaryHeating + ", cruiseControl="
+				+ cruiseControl + ", electricWindows=" + electricWindows + ", sunroof=" + sunroof
+				+ ", powerAssistedSteering=" + powerAssistedSteering + ", mp3Interface=" + mp3Interface + ", bluetooth="
+				+ bluetooth + ", electricHeatedSeats=" + electricHeatedSeats + ", tunerRadio=" + tunerRadio
+				+ ", onBoardComputer=" + onBoardComputer + ", rainSensor=" + rainSensor
+				+ ", multifunctionSteeringWheel=" + multifunctionSteeringWheel + ", handsFreeKit=" + handsFreeKit
+				+ ", cdPlayer=" + cdPlayer + ", electricSeatAdjustment=" + electricSeatAdjustment + ", centralLocking="
+				+ centralLocking + ", startStopSystem=" + startStopSystem + ", electricSideMirror=" + electricSideMirror
+				+ ", ventilatedSeats=" + ventilatedSeats + ", navigationSystem=" + navigationSystem + ", headUpDisplay="
+				+ headUpDisplay + ", laneDepartureWarningSystem=" + laneDepartureWarningSystem + ", abs=" + abs
+				+ ", fogLamp=" + fogLamp + ", ledHeadlights=" + ledHeadlights + ", fourWheelDrive=" + fourWheelDrive
+				+ ", adaptiveCruiseControl=" + adaptiveCruiseControl + ", daytimeRunningLights=" + daytimeRunningLights
+				+ ", collisionAvoidanceSystem=" + collisionAvoidanceSystem + ", lightSensor=" + lightSensor
+				+ ", immobilizer=" + immobilizer + ", adaptiveLighting=" + adaptiveLighting + ", frontAirbags="
+				+ frontAirbags + ", sideAirbags=" + sideAirbags + ", moreAirbags=" + moreAirbags + ", rearSensors="
+				+ rearSensors + ", frontSensors=" + frontSensors + ", camera=" + camera + ", selfSteeringSystems="
+				+ selfSteeringSystems + ", esp=" + esp + ", xenonHeadlights=" + xenonHeadlights + ", tractionControl="
+				+ tractionControl + ", keylessEntry=" + keylessEntry + "]";
+	}
 
 	public Car(String email, String make, String model, String variant, String fuel, String vehicleType,
 			String transmision, int year, int kilometer, int price, int power, String location,
@@ -132,6 +164,14 @@ public class Car implements Vehicle {
 		this.keylessEntry = keylessEntry;
 	}
 	
+	public Car(String email, String make2, String model2, int year2, int price2) {
+		this.userEmail=email;
+		this.make=make2;
+		this.model=model2;
+		this.year=year2;
+		this.price=price2;
+	}
+
 	public String getUserEmail() {
 		return userEmail;
 	}
@@ -142,7 +182,13 @@ public class Car implements Vehicle {
 		return make;
 	}
 
+	public String getPhoto() {
+		return photo;
+	}
 
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 
 	public String getModel() {
 		return model;
@@ -346,6 +392,15 @@ public class Car implements Vehicle {
 		return fogLamp;
 	}
 
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 
 	public boolean isLedHeadlights() {
@@ -462,14 +517,12 @@ public class Car implements Vehicle {
 
 
 
-	@Override
+	
 	public double getRating() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.getRating();
 	}
 
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 3fbe63ac5a887a32e26c5befd72a89166e76978b
+
+

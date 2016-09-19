@@ -8,6 +8,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%if(session.getAttribute("user")==null){
+	response.sendRedirect("Login.jsp");
+}%>
 <script>
         function makeFullScreen() {
          var divObj = document.getElementById("theImage");
@@ -46,51 +49,41 @@
 
 		<div id="_216">
 
-			<div id="_217" data-pagelink="HomePageFindCar" class="nm-label">
-				<span id="_218"> Home<br />
+			<div id="_217"  class="nm-label">
+				<a href="../jsp/HomePageFindCar.jsp"> Home</a>
 				</span>
 			</div>
 
-			<div id="_219" data-pagelink="0643bef3-8d19-a14a-5405-03ab8048f78e"
+			<div id="_219" 
 				class="nm-label">
-<<<<<<< HEAD
 				<a href="../jsp/AddCarPage.jsp"> Add Car</a>
-=======
-				<span id="_220"> Add Car<br />
-				</span>
->>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
 			</div>
 
-			<div id="_221" data-pagelink="53df4c96-963c-9ce0-edb9-83fdf279daf5"
+			<div id="_221"
 				class="nm-label">
-				<span id="_222"> Add Service<br />
-				</span>
+				<a href="../jsp/RegisterService.jsp"> Register Service</a>
 			</div>
 
-			<div id="_223" data-pagelink="c9679362-2c21-98bd-2957-685f655fd083"
+			<div id="_223" 
 				class="nm-label">
-				<span id="_224"> My Cars<br />
+				<span id="_224"><a href="MyCars.jsp">My Cars</a> <br />
 				</span>
 			</div>
 
-			<div id="_225" data-pagelink="399e5e5b-29f7-9aac-9852-3183820f47bf"
+			<div id="_225" 
 				class="nm-label">
-				<a id="_226" href="#"> My Services<br />
+				<a id="_226" href="TopService.jsp"> Services<br />
 				</a>
 			</div>
 
-			<a id="_227" data-pagelink="HomePageFindCar" class="navbar-brand"
-				href="#">Log out</a>
+			<a id="_227" class="navbar-brand"
+				href="../pages/HomePageFindCar.html">Log out</a>
 
 		</div>
-<<<<<<< HEAD
-
-		<i id="_228">  </i>
-=======
 		<div id="_228">
 			
 			<img id="theImage" src="../PictureServlet"  height="150" width="150" onClick="makeFullScreen()" ></div>
->>>>>>> 3fbe63ac5a887a32e26c5befd72a89166e76978b
+
 
 		<div id="_229" data-pagelink="ViewCar">
 
@@ -139,57 +132,41 @@
 
 		<div id="_251" data-pagelink="91a7070b-f517-e79f-b0b7-54afc24f79fd"
 			class="nm-label">
-<<<<<<< HEAD
-			<a id="_252" href="#"> Edit Profile<br />
-=======
+
 			<a href="../jsp/EditProfile.jsp"> Edit Profile</a><br />
->>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
+
 			</a>
+				<%
+					User u = (User) (session.getAttribute("user"));
+				%>
 		</div>
 <% if(u!=null){%>
 		<div id="_253" data-pagelink="b7b0732b-5938-8ca4-6173-441f1ef0bd01"
 			class="nm-label">
 			<h3 id="_254">
-<<<<<<< HEAD
-				<%
-					User u = (User) (session.getAttribute("user"));
-				%>
+
 				<%=u.getName()%>
 				<br />
-=======
-				Ne znam <br />
-			</h3>
-		</div>
 
-		<div id="_255" class="nm-label">
-			<h3 id="_256">
-				User<br />
->>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
+
 			</h3>
 		</div>
 
 		<div id="_257" class="nm-label">
 			<h3 id="_258">
-<<<<<<< HEAD
+
 				Location:
 				<%=u.getLocation()%>
 				<br />
-=======
-				Location<br />
->>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
+
 			</h3>
 		</div>
 
 		<div id="_259" class="nm-label">
 			<h3 id="_260">
-<<<<<<< HEAD
+
 				<%=u.getPhone()%>
-=======
-				<%
-					User u = (User) (session.getAttribute("user"));
-				%>
-				<%=u.getName()%>
->>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
+
 				<br />
 			</h3>
 		</div>

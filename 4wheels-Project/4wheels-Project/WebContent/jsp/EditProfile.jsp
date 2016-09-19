@@ -6,6 +6,9 @@
 <html>
 
 <head>
+<%if(session.getAttribute("user")==null){
+	response.sendRedirect("Login.jsp");
+}%>
 <style>
 .ddl {
 	top: 290px;
@@ -96,15 +99,10 @@
 				href="HomePageFindCar.jsp">Log out</a>
 
 		</div>
-<<<<<<< HEAD
 
-		<i id="_1175">  </i>
-
-=======
 	<div class="picture">
 			<img id="theImage" src="../PictureServlet"  height="150" width="150" onClick="makeFullScreen()" ></div>
 			 
->>>>>>> 3fbe63ac5a887a32e26c5befd72a89166e76978b
 		<div id="_1176" class="nm-label">
 			<h1 id="_1177">
 				Edit Profile<br />

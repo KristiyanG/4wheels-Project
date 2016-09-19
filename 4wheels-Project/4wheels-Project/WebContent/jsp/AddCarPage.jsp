@@ -14,13 +14,22 @@
 <link rel="stylesheet"
 	href="../styles/properties-658144f9-0c3e-8baf-fca5-a1e02fd800fb.css">
 
-
+<style>
+.ddl2 {
+	top: 1800px;
+	left: 30px;
+	width: 220px;
+	height: 35px;
+}
+</style>
 <style>
 .myform {
 	top: 140px;
 }
 </style>
-
+<%if(session.getAttribute("user")==null){
+	response.sendRedirect("Login.jsp");
+}%>
 
 </head>
 <body>
@@ -36,8 +45,8 @@
 			<svg id="_270"> <line id="_271" x1="0" x2="957" y1="" y2="0" />
 			</svg>
 		</div>
-		<form id="add_car" name="AddCar" method="POST" action="../AddCarServlet" role="form">
-
+		<form id="add_car" name="AddCar" method="POST" action="../AddCarServlet" role="form" enctype="multipart/form-data">
+		
 			<div id="_272" class="nm-label">
 				<h3 id="_273">
 					Make<br />
@@ -722,12 +731,12 @@
 
 			<button id="_550" data-pagelink="ViewCar" class="btn btn-default">
 				Register</button>
-			<button id="_551" class="btn btn-default">Add Pictures</button>
+			
+			
 
-			<i id="_552">  </i> <i id="_553">  </i> <i id="_554">  </i> <i
-				id="_555">  </i> <i id="_556">  </i> <i id="_557">  </i> <i
-				id="_558">  </i> <i id="_559">  </i> <i id="_560">  </i> <i
-				id="_561">  </i>
+				 <input class="ddl2" type="file" class="picture" name="carPhoto" 	placeholder="Profile pic"/> 
+				 
+			
 	
 		<div id="_562">
 
