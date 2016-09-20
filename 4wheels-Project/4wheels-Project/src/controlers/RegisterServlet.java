@@ -5,12 +5,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
+=======
+import javax.servlet.http.HttpSession;
+>>>>>>> 8fda4d63bdc1e1b0a52e6a88c3cacf93a6739bd3
 import javax.servlet.http.Part;
 
 import busynesLogic.exceptions.InvalidPasswordException;

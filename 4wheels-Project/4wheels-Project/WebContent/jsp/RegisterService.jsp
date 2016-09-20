@@ -12,6 +12,9 @@
 	left: 350px;
 }
 </style>
+<%if(session.getAttribute("user")==null){
+	response.sendRedirect("Login.jsp");
+}%>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 

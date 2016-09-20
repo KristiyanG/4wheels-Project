@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeSet;
@@ -300,21 +301,7 @@ public class UserDAO {
 		this.connection = DBManager.getInstance().getConnection();
 		System.out.println("Rating" + rating);
 		try {
-			double convertRate=1;
-			switch (rating) {
-			case "1":convertRate=1;
-				break;
-			case "2":convertRate=2;
-			break;
-			
-			case "3":convertRate=3;
-			break;
-			case "4":convertRate=4;
-			break;
-			case "5":convertRate=5;
-			break;
-				
-			}
+			double convertRate = Double.parseDouble(rating);
 			PreparedStatement stm = connection
 					.prepareStatement("Update users Set rating=? where email=?;");
 			stm.setDouble(1, convertRate);

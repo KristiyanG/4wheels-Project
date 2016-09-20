@@ -79,6 +79,11 @@
         </h3>
     </div>
 
+<<<<<<< HEAD
+=======
+   
+
+>>>>>>> 8fda4d63bdc1e1b0a52e6a88c3cacf93a6739bd3
     <div id="_1472" class="nm-label">
       <h3 id="_1473">
            <%=ser.getLocation() %><br/>

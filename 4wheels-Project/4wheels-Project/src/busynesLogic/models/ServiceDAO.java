@@ -42,11 +42,16 @@ public class ServiceDAO {
 			ResultSet resultSet = st.executeQuery("SELECT location, name, phone,user_email FROM services order by rating;");
 			while (resultSet.next()) {
 				services.put(resultSet.getString("name") + resultSet.getString("location"),
+<<<<<<< HEAD
 						new Service(
 								resultSet.getString("name"), 
 								resultSet.getString("user_email"),
 								resultSet.getString("location"), 
 								resultSet.getString("phone")));
+=======
+						new Service(resultSet.getString("name"), resultSet.getString("user_email"),
+								resultSet.getString("location"), resultSet.getString("phone")));
+>>>>>>> 8fda4d63bdc1e1b0a52e6a88c3cacf93a6739bd3
 			}
 			System.out.println("Service are loaded ! ");
 		} catch (SQLException e) {

@@ -1,22 +1,23 @@
 package controlers;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.servlet.RequestDispatcher;
+import java.io.InputStream;
+import java.nio.file.Files;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import busynesLogic.models.Car;
 import busynesLogic.models.CarDAO;
 import busynesLogic.models.User;
 
 @WebServlet("/AddCarServlet")
+@MultipartConfig
 public class AddCarServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,7 +25,6 @@ public class AddCarServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		Car car = createCar(request);
 		CarDAO accesser = CarDAO.getInstance();
 		accesser.insertCar(car);
@@ -32,7 +32,7 @@ public class AddCarServlet extends HttpServlet {
 		request.getRequestDispatcher("pages/Profile.html").forward(request, response);
 	}
 
-	private Car createCar(HttpServletRequest request) {
+	private Car createCar(HttpServletRequest request) throws IOException, ServletException {
 		String make = request.getParameter("Make");
 		String model = request.getParameter("Model");
 		String variant = request.getParameter("Variant");
@@ -45,6 +45,8 @@ public class AddCarServlet extends HttpServlet {
 		int power = Integer.valueOf(request.getParameter("power"));
 		String location = request.getParameter("location");
 		String color = request.getParameter("color");
+		Part profilePic = request.getPart("carPhoto");
+		InputStream profilePicStream = profilePic.getInputStream();
 		boolean auxiliaryHeating = request.getParameter("auxiliaryHeating") != null;
 		boolean cruiseControl = request.getParameter("cruise_control") != null;
 		boolean electricWindows = request.getParameter("electricWindows") != null;
@@ -89,9 +91,17 @@ public class AddCarServlet extends HttpServlet {
 		boolean tractionControl = request.getParameter("traction_control") != null;
 		boolean keylessEntry = request.getParameter("keyless_entry") != null;
 		
+
 		String email = ((User)request.getSession(false).getAttribute("user")).getEmail();
 		
-		Car car = new Car(email, make, model, variant, fuel, vehicleType, color, transmision, year, kilometer, price, power, location,
+		 String contentType = profilePic.getContentType().split("/")[1];
+		 
+			String fileFullName =make+"-"+"model"+"-profile-pic."+ contentType;
+			System.out.println(fileFullName);
+			
+		User u  = (User) request.getSession().getAttribute("user");
+		System.out.println(u.getEmail());
+		Car car = new Car(u.getEmail(), make, model, variant, fuel, vehicleType, transmision, fileFullName, year, kilometer, price, power, location,
 				auxiliaryHeating, cruiseControl, electricWindows, sunroof, powerAssistedSteering, mp3Interface, bluetooth,
 				electricHeatedSeats, tunerRadio, onBoardComputer, rainSensor, multifunctionSteeringWheel,
 				handsFreeKit, cdPlayer, electricSeatAdjustment, centralLocking, startStopSystem, electricSideMirror, 
@@ -99,7 +109,28 @@ public class AddCarServlet extends HttpServlet {
 				fourWheelDrive, adaptiveCruiseControl, daytimeRunningLights, collisionAvoidanceSystem, lightSensor, 
 				immobilizer, adaptiveLighting, frontAirbags, sideAirbags, moreAirbags, rearSensors, frontSensors,
 				camera, selfSteeringSystems, esp, xenonHeadlights, tractionControl, keylessEntry);
-		return car;
+
+		car.setPhoto(fileFullName);
+		
+		System.out.println(car);
+		File dir = new File("carsPhotosPics");
+		if(!dir.exists()){
+			dir.mkdir();
+		}
+		File profilePicFile = new File(dir, fileFullName);
+		System.out.println("Try to save file with name: " + profilePicFile.getName());
+		System.out.println("abs. path = " + profilePicFile.getAbsolutePath());
+		try {
+			Files.copy(profilePicStream, profilePicFile.toPath());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		CarDAO accesser = CarDAO.getInstance();
+		accesser.insertCar(car);
+		
+		return car;		
 	}
 
 }
