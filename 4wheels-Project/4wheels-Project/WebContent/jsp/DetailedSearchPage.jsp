@@ -16,64 +16,79 @@
 
 <body>
 
+<form name="carSearchForm" action="../CarSearchServlet" method="POST">
+
 	<div id="_682">
-		<div class="radio" id="_683">
-			<label id="_684"> <input type="radio" />Yellow
-			</label>
-		</div>
-
-		<i id="_685"></i>
-		<div class="radio" id="_686">
-			<label id="_687"> <input type="radio" />Brown
-			</label>
-		</div>
-		<div class="radio" id="_688">
-			<label id="_689"> <input type="radio" />Other
-			</label>
-		</div>
-		<div class="radio" id="_690">
-			<label id="_691"> <input type="radio" />Silver
-			</label>
-		</div>
-		<div class="radio" id="_692">
-			<label id="_693"> <input type="radio" />Orange
-			</label>
-		</div>
-		<div class="radio" id="_694">
-			<label id="_695"> <input type="radio" />Beige
-			</label>
-		</div>
-		<div class="radio" id="_696">
-			<label id="_697"> <input type="radio" />Red
-			</label>
-		</div>
-
+	<i id="_685"></i>
 		<div id="_698" class="nm-label">
-			<h3 id="_699">
-				Exterior Color<br />
-			</h3>
+					<h3 id="_699">
+						Exterior Color<br />
+					</h3>
 		</div>
-		<div class="radio" id="_700">
-			<label id="_701"> <input type="radio" />White
-			</label>
+	
+		<div id="car_color_detailed_search">
+				<div class="radio" id="_683">
+					<label id="_684"> <input type="radio" name="car_color"
+					value="yellow" />Yellow
+					</label>
+				</div>
+				
+				<div class="radio" id="_686">
+					<label id="_687"> <input type="radio" name="car_color"
+					value="brown" />Brown
+					</label>
+				</div>
+				<div class="radio" id="_688">
+					<label id="_689"> <input type="radio" name="car_color"
+					value="other" />Other
+					</label>
+				</div>
+				<div class="radio" id="_690">
+					<label id="_691"> <input type="radio" name="car_color"
+					value="silver" />Silver
+					</label>
+				</div>
+				<div class="radio" id="_692">
+					<label id="_693"> <input type="radio" name="car_color"
+					value="orange" />Orange
+					</label>
+				</div>
+				<div class="radio" id="_694">
+					<label id="_695"> <input type="radio" name="car_color"
+					value="beige" />Beige
+					</label>
+				</div>
+				<div class="radio" id="_696">
+					<label id="_697"> <input type="radio" name="car_color"
+					value="red" />Red
+					</label>
+				</div>				
+				<div class="radio" id="_700">
+					<label id="_701"> <input type="radio" name="car_color"
+					value="white" />White
+					</label>
+				</div>
+				<div class="radio" id="_702">
+					<label id="_703"> <input type="radio" name="car_color"
+					value="grey" />Grey
+					</label>
+				</div>
+				<div class="radio" id="_704">
+					<label id="_705"> <input type="radio" name="car_color"
+					value="green" />Green
+					</label>
+				</div>
+				<div class="radio" id="_706">
+					<label id="_707"> <input type="radio" name="car_color"
+					value="blue" />Blue
+					</label>
+				</div>
+				<div class="radio" id="_708">
+					<label id="_709"> <input type="radio" name="car_color"
+					value="black" />Black
+					</label>
+			</div>
 		</div>
-		<div class="radio" id="_702">
-			<label id="_703"> <input type="radio" />Grey
-			</label>
-		</div>
-		<div class="radio" id="_704">
-			<label id="_705"> <input type="radio" />Green
-			</label>
-		</div>
-		<div class="radio" id="_706">
-			<label id="_707"> <input type="radio" />Blue
-			</label>
-		</div>
-		<div class="radio" id="_708">
-			<label id="_709"> <input type="radio" checked />Black
-			</label>
-		</div>
-
 		<div id="_710">
 			<svg id="_711"> <line id="_712" x1="0" x2="957" y1="" y2="0" />
 			</svg>
@@ -91,81 +106,49 @@
 			</h3>
 		</div>
 
-		<div id="_719" class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" id="_720">
-				to <span class="caret"></span>
-			</button>
-			<ul id="_721" class="dropdown-menu" role="menu">
-				<li href="#">
+		<select id="_719" name="to_km" class="btn-group">
+			<option disabled="disabled" selected value="200000">to</option>
+			<option value = "10000">10 000km</option>
+			<option value = "20000">20 000km</option>
+			<option value = "30000">30 000km</option>
+			<option value = "40000">40 000km</option>
+			<option value = "50000">50 000km</option>
+			<option value = "60000">60 000km</option>
+			<option value = "70000">70 000km</option>
+			<option value = "80000">80 000km</option>
+			<option value = "90000">90 000km</option>
+			<option value = "100000">100 000km</option>
+			<option value = "110000">110 000km</option>
+			<option value = "120000">120 000km</option>
+			<option value = "130000">130 000km</option>
+			<option value = "140000">140 000km</option>
+			<option value = "150000">150 000km</option>
+			<option value = "160000">160 000km</option>
+			<option value = "170000">170 000km</option>
+			<option value = "180000">180 000km</option>
+			<option value = "190000">190 000km</option>
+			<option value = "200000">200 000km</option>
+		</select>
 
-					<div id="_722" class="nm-label">
-						<a id="_723" href="#"> Action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
 
-					<div id="_724" class="nm-label">
-						<a id="_725" href="#"> Another action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_726" class="nm-label">
-						<a id="_727" href="#"> Something else here<br />
-						</a>
-					</div>
-				</li>
-				<li class="divider"></li>
-				<li href="#">
-
-					<div id="_728" class="nm-label">
-						<a id="_729" href="#"> Separated link<br />
-						</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-
-		<div id="_730" class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" id="_731">
-				to <span class="caret"></span>
-			</button>
-			<ul id="_732" class="dropdown-menu" role="menu">
-				<li href="#">
-
-					<div id="_733" class="nm-label">
-						<a id="_734" href="#"> Action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_735" class="nm-label">
-						<a id="_736" href="#"> Another action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_737" class="nm-label">
-						<a id="_738" href="#"> Something else here<br />
-						</a>
-					</div>
-				</li>
-				<li class="divider"></li>
-				<li href="#">
-
-					<div id="_739" class="nm-label">
-						<a id="_740" href="#"> Separated link<br />
-						</a>
-					</div>
-				</li>
-			</ul>
-		</div>
+		<select id="_730" name="to_power">
+			<option disabled="disabled" value="454" selected>to</option>
+			<option value="34">34 PS</option>
+			<option value="50">50 PS</option>
+			<option value="60">60 PS</option>
+			<option value="75">75 PS</option>
+			<option value="90">90 PS</option>
+			<option value="101">101 PS</option>
+			<option value="118">118 PS</option>
+			<option value="131">131 PS</option>
+			<option value="150">150 PS</option>
+			<option value="200">200 PS</option>
+			<option value="252">252 PS</option>
+			<option value="303">303 PS</option>
+			<option value="358">358 PS</option>
+			<option value="402">402 PS</option>
+			<option value="454">454 PS</option>
+		</select>
 
 		<div id="_741" class="nm-label">
 			<h3 id="_742">
@@ -178,205 +161,135 @@
 			</a>
 		</div>
 
-		<div id="_745" class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" id="_746">
-				from <span class="caret"></span>
-			</button>
-			<ul id="_747" class="dropdown-menu" role="menu">
-				<li href="#">
+		<select id="_745" name="from_power">
+			<option value="0">from</option>
+			<option value="34">34 PS</option>
+			<option value="50">50 PS</option>
+			<option value="60">60 PS</option>
+			<option value="75">75 PS</option>
+			<option value="90">90 PS</option>
+			<option value="101">101 PS</option>
+			<option value="118">118 PS</option>
+			<option value="131">131 PS</option>
+			<option value="150">150 PS</option>
+			<option value="200">200 PS</option>
+			<option value="252">252 PS</option>
+			<option value="303">303 PS</option>
+			<option value="358">358 PS</option>
+			<option value="402">402 PS</option>
+			<option value="454">454 PS</option>
+		</select>
 
-					<div id="_748" class="nm-label">
-						<a id="_749" href="#"> Action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
+		<select id="_756" name="from_km"class="btn-group">
+			<option selected value = "0">from</option>
+			<option value = "10000">10 000km</option>
+			<option value = "20000">20 000km</option>
+			<option value = "30000">30 000km</option>
+			<option value = "40000">40 000km</option>
+			<option value = "50000">50 000km</option>
+			<option value = "60000">60 000km</option>
+			<option value = "70000">70 000km</option>
+			<option value = "80000">80 000km</option>
+			<option value = "90000">90 000km</option>
+			<option value = "100000">100 000km</option>
+			<option value = "110000">110 000km</option>
+			<option value = "120000">120 000km</option>
+			<option value = "130000">130 000km</option>
+			<option value = "140000">140 000km</option>
+			<option value = "150000">150 000km</option>
+			<option value = "160000">160 000km</option>
+			<option value = "170000">170 000km</option>
+			<option value = "180000">180 000km</option>
+			<option value = "190000">190 000km</option>
+			<option value = "200000">200 000km</option>
+		</select>
 
-					<div id="_750" class="nm-label">
-						<a id="_751" href="#"> Another action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
+		<select id="_767" name="to_price" >
+			<option disabled="disabled" value="90000" selected >to</option>
+			<option value="500">500</option>
+			<option value="1000">1000</option>
+			<option value="1500">1500</option>
+			<option value="2000">2000</option>
+			<option value="2500">2500</option>
+			<option value="3000">3000</option>
+			<option value="3500">3500</option>
+			<option value="4000">4000</option>
+			<option value="4500">4500</option>
+			<option value="5000">5000</option>
+			<option value="6000">6000</option>
+			<option value="7000">7000</option>
+			<option value="8000">8000</option>
+			<option value="9000">9000</option>
+			<option value="10000">10000</option>
+			<option value="11000">11000</option>
+			<option value="12000">12000</option>
+			<option value="13000">13000</option>
+			<option value="14000">14000</option>
+			<option value="15000">15000</option>
+			<option value="17500">17500</option>
+			<option value="20000">20000</option>
+			<option value="22500">22500</option>
+			<option value="25000">25000</option>
+			<option value="27500">27500</option>
+			<option value="30000">30000</option>
+			<option value="35000">35000</option>
+			<option value="40000">40000</option>
+			<option value="45000">45000</option>
+			<option value="50000">50000</option>
+			<option value="55000">55000</option>
+			<option value="60000">60000</option>
+			<option value="70000">70000</option>
+			<option value="80000">80000</option>
+			<option value="90000">90000</option>
+		</select>
 
-					<div id="_752" class="nm-label">
-						<a id="_753" href="#"> Something else here<br />
-						</a>
-					</div>
-				</li>
-				<li class="divider"></li>
-				<li href="#">
-
-					<div id="_754" class="nm-label">
-						<a id="_755" href="#"> Separated link<br />
-						</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-
-		<div id="_756" class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" id="_757">
-				from <span class="caret"></span>
-			</button>
-			<ul id="_758" class="dropdown-menu" role="menu">
-				<li href="#">
-
-					<div id="_759" class="nm-label">
-						<a id="_760" href="#"> Action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_761" class="nm-label">
-						<a id="_762" href="#"> Another action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_763" class="nm-label">
-						<a id="_764" href="#"> Something else here<br />
-						</a>
-					</div>
-				</li>
-				<li class="divider"></li>
-				<li href="#">
-
-					<div id="_765" class="nm-label">
-						<a id="_766" href="#"> Separated link<br />
-						</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-
-		<div id="_767" class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" id="_768">
-				to <span class="caret"></span>
-			</button>
-			<ul id="_769" class="dropdown-menu" role="menu">
-				<li href="#">
-
-					<div id="_770" class="nm-label">
-						<a id="_771" href="#"> Action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_772" class="nm-label">
-						<a id="_773" href="#"> Another action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_774" class="nm-label">
-						<a id="_775" href="#"> Something else here<br />
-						</a>
-					</div>
-				</li>
-				<li class="divider"></li>
-				<li href="#">
-
-					<div id="_776" class="nm-label">
-						<a id="_777" href="#"> Separated link<br />
-						</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-
-		<div id="_778" class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" id="_779">
-				to <span class="caret"></span>
-			</button>
-			<ul id="_780" class="dropdown-menu" role="menu">
-				<li href="#">
-
-					<div id="_781" class="nm-label">
-						<a id="_782" href="#"> Action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_783" class="nm-label">
-						<a id="_784" href="#"> Another action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_785" class="nm-label">
-						<a id="_786" href="#"> Something else here<br />
-						</a>
-					</div>
-				</li>
-				<li class="divider"></li>
-				<li href="#">
-
-					<div id="_787" class="nm-label">
-						<a id="_788" href="#"> Separated link<br />
-						</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-
+		<select id="_778" name="to_year" class="btn-group">
+			<option disabled="disabled" value="2000" selected>to</option>
+			<option value="2016">2016</option>
+			<option value="2015">2015</option>
+			<option value="2014">2014</option>
+			<option value="2013">2013</option>
+			<option value="2012">2012</option>
+			<option value="2011">2011</option>
+			<option value="2010">2010</option>
+			<option value="2009">2009</option>
+			<option value="2008">2008</option>
+			<option value="2007">2007</option>
+			<option value="2006">2006</option>
+			<option value="2005">2005</option>
+			<option value="2004">2004</option>
+			<option value="2003">2003</option>
+			<option value="2002">2002</option>
+			<option value="2001">2001</option>
+			<option value="2000">2000</option>
+		</select> 
+		
 		<select id="_792" name="Make" onchange="findModel(value)"
 			data-param-rfpf="mke">
-			<option value="" selected="selected">Any</option>
+			<option>Any</option>
 			<option value="Abarth">Abarth</option>
 			<option value="AC">AC</option>
 			<option value="Acura">Acura</option>
-			<option value="800">Aixam</option>
-			<option value="900">Alfa Romeo</option>
-			<option value="1100">ALPINA</option>
-			<option value="121">Artega</option>
-			<option value="1750">Asia Motors</option>
-			<option value="1700">Aston Martin</option>
-			<option value="1900">Audi</option>
-			<option value="2000">Austin</option>
-			<option value="1950">Austin Healey</option>
+			<option value="AlfaRomeo">Alfa Romeo</option>
+			<option value="AstonMartin">Aston Martin</option>
+			<option value="Audi">Audi</option>
 			<option value="3100">Bentley</option>
-			<option value="3500">BMW</option>
-			<option value="3850">Borgward</option>
-			<option value="4025">Brilliance</option>
+			<option value="BMW">BMW</option>
 			<option value="4350">Bugatti</option>
 			<option value="4400">Buick</option>
 			<option value="4700">Cadillac</option>
-			<option value="112">Casalini</option>
-			<option value="5300">Caterham</option>
-			<option value="83">Chatenet</option>
 			<option value="5600">Chevrolet</option>
 			<option value="5700">Chrysler</option>
 			<option value="5900">Citroën</option>
-			<option value="6200">Cobra</option>
 			<option value="6325">Corvette</option>
 			<option value="6600">Dacia</option>
 			<option value="6800">Daewoo</option>
 			<option value="7000">Daihatsu</option>
-			<option value="7400">DeTomaso</option>
 			<option value="7700">Dodge</option>
-			<option value="255">Donkervoort</option>
-			<option value="235">DS Automobiles</option>
 			<option value="8600">Ferrari</option>
 			<option value="8800">Fiat</option>
-			<option value="172">Fisker</option>
 			<option value="9000">Ford</option>
-			<option value="205">GAC Gonow</option>
-			<option value="204">Gemballa</option>
 			<option value="9900">GMC</option>
-			<option value="122">Grecav</option>
-			<option value="186">Hamann</option>
-			<option value="10850">Holden</option>
 			<option value="11000">Honda</option>
 			<option value="11050">Hummer</option>
 			<option value="11600">Hyundai</option>
@@ -386,75 +299,48 @@
 			<option value="12400">Jaguar</option>
 			<option value="12600">Jeep</option>
 			<option value="13200">Kia</option>
-			<option value="13450">Koenigsegg</option>
-			<option value="13900">KTM</option>
-			<option value="14400">Lada</option>
 			<option value="14600">Lamborghini</option>
 			<option value="14700">Lancia</option>
 			<option value="14800">Land Rover</option>
-			<option value="14845">Landwind</option>
 			<option value="15200">Lexus</option>
-			<option value="15400">Ligier</option>
-			<option value="15500">Lincoln</option>
 			<option value="15900">Lotus</option>
-			<option value="16200">Mahindra</option>
 			<option value="16600">Maserati</option>
 			<option value="16700">Maybach</option>
 			<option value="16800">Mazda</option>
 			<option value="137">McLaren</option>
 			<option value="17200">Mercedes-Benz</option>
 			<option value="17300">MG</option>
-			<option value="30011">Microcar</option>
 			<option value="17500">MINI</option>
 			<option value="17700">Mitsubishi</option>
 			<option value="17900">Morgan</option>
 			<option value="18700">Nissan</option>
-			<option value="18875">NSU</option>
-			<option value="18975">Oldsmobile</option>
 			<option value="19000">Opel</option>
 			<option value="149">Pagani</option>
 			<option value="19300">Peugeot</option>
-			<option value="19600">Piaggio</option>
-			<option value="19800">Plymouth</option>
 			<option value="20000">Pontiac</option>
 			<option value="20100">Porsche</option>
-			<option value="20200">Proton</option>
 			<option value="20700">Renault</option>
 			<option value="21600">Rolls-Royce</option>
 			<option value="21700">Rover</option>
-			<option value="125">Ruf</option>
 			<option value="21800">Saab</option>
-			<option value="22000">Santana</option>
 			<option value="22500">Seat</option>
 			<option value="22900">Skoda</option>
-			<option value="23000">Smart</option>
-			<option value="188">speedART</option>
-			<option value="100">Spyker</option>
-			<option value="23100">Ssangyong</option>
 			<option value="23500">Subaru</option>
 			<option value="23600">Suzuki</option>
-			<option value="23800">Talbot</option>
-			<option value="23825">Tata</option>
-			<option value="189">TECHART</option>
 			<option value="135">Tesla</option>
 			<option value="24100">Toyota</option>
-			<option value="24200">Trabant</option>
-			<option value="24400">Triumph</option>
 			<option value="24500">TVR</option>
 			<option value="25200">Volkswagen</option>
 			<option value="25100">Volvo</option>
-			<option value="25300">Wartburg</option>
-			<option value="113">Westfield</option>
-			<option value="25650">Wiesmann</option>
 			<option value="1400">Other</option>
 		</select>
 
 		<div class="checkbox" id="_800">
-			<label id="_801"> <input type="checkbox" checked />ESP
+			<label id="_801"> <input type="checkbox" name="esp" />ESP
 			</label>
 		</div>
 		<div class="checkbox" id="_802">
-			<label id="_803"> <input type="checkbox" checked />Keyless
+			<label id="_803"> <input type="checkbox" name="keyless_entry"/>Keyless
 				Entry
 			</label>
 		</div>
@@ -464,81 +350,76 @@
 			data-param-rfpf="mde" disabled>
 		</select>
 
-		<div id="_815" class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" id="_816">
-				from <span class="caret"></span>
-			</button>
-			<ul id="_817" class="dropdown-menu" role="menu">
-				<li href="#">
+		<select id="_815" name="from_price" >
+			<option value="0" selected>from</option>
+			<option value="500">500</option>
+			<option value="1000">1000</option>
+			<option value="1500">1500</option>
+			<option value="2000">2000</option>
+			<option value="2500">2500</option>
+			<option value="3000">3000</option>
+			<option value="3500">3500</option>
+			<option value="4000">4000</option>
+			<option value="4500">4500</option>
+			<option value="5000">5000</option>
+			<option value="6000">6000</option>
+			<option value="7000">7000</option>
+			<option value="8000">8000</option>
+			<option value="9000">9000</option>
+			<option value="10000">10000</option>
+			<option value="11000">11000</option>
+			<option value="12000">12000</option>
+			<option value="13000">13000</option>
+			<option value="14000">14000</option>
+			<option value="15000">15000</option>
+			<option value="17500">17500</option>
+			<option value="20000">20000</option>
+			<option value="22500">22500</option>
+			<option value="25000">25000</option>
+			<option value="27500">27500</option>
+			<option value="30000">30000</option>
+			<option value="35000">35000</option>
+			<option value="40000">40000</option>
+			<option value="45000">45000</option>
+			<option value="50000">50000</option>
+			<option value="55000">55000</option>
+			<option value="60000">60000</option>
+			<option value="70000">70000</option>
+			<option value="80000">80000</option>
+			<option value="90000">90000</option>
+		</select>
 
-					<div id="_818" class="nm-label">
-						<a id="_819" href="#"> Action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_820" class="nm-label">
-						<a id="_821" href="#"> Another action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_822" class="nm-label">
-						<a id="_823" href="#"> Something else here<br />
-						</a>
-					</div>
-				</li>
-				<li class="divider"></li>
-				<li href="#">
-
-					<div id="_824" class="nm-label">
-						<a id="_825" href="#"> Separated link<br />
-						</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-
-		<div id="_827">
-			<svg id="_828"> <line id="_829" x1="0" x2="957" y1="" y2="0" />
-			</svg>
-		</div>
+		<div id="_827"></div>
 		<div class="checkbox" id="_830">
-			<label id="_831"> <input type="checkbox" checked />Head-up
+			<label id="_831"> <input type="checkbox" name="head_up_display"/>Head-up
 				display
 			</label>
 		</div>
-		<div class="radio" id="_832">
-			<label id="_833"> <input type="radio" />Semi-automatic
-			</label>
-		</div>
 
-		<select id="_834" class="btn-group">
-			<option disabled="disabled" selected>from</option>
-			<option>2016</option>
-			<option>2015</option>
-			<option>2014</option>
-			<option>2013</option>
-			<option>2012</option>
-			<option>2011</option>
-			<option>2010</option>
-			<option>2009</option>
-			<option>2008</option>
-			<option>2007</option>
-
+		<select id="_834" name="from_year"class="btn-group">
+			<option disabled="disabled" value ="0" selected>from</option>
+			<option value="2016">2016</option>
+			<option value="2015">2015</option>
+			<option value="2014">2014</option>
+			<option value="2013">2013</option>
+			<option value="2012">2012</option>
+			<option value="2011">2011</option>
+			<option value="2010">2010</option>
+			<option value="2009">2009</option>
+			<option value="2008">2008</option>
+			<option value="2007">2007</option>
+			<option value="2006">2006</option>
+			<option value="2005">2005</option>
+			<option value="2004">2004</option>
+			<option value="2003">2003</option>
+			<option value="2002">2002</option>
+			<option value="2001">2001</option>
+			<option value="2000">2000</option>
 		</select>
 
 		<div class="checkbox" id="_845">
-			<label id="_846"> <input type="checkbox" checked />Traction
+			<label id="_846"> <input type="checkbox" name="traction_control" />Traction
 				control
-			</label>
-		</div>
-		<div class="radio" id="_847">
-			<label id="_848"> <input type="radio" />Automatic
-				transmission
 			</label>
 		</div>
 
@@ -547,94 +428,64 @@
 				Vehicle type <br />
 			</h3>
 		</div>
-		<div class="radio" id="_851">
-			<label id="_852"> <input type="radio" checked />Manual
-				gearbox
-			</label>
+		<div id="transmision_detailed_search">
+			<div class="radio" id="_851">
+				<label id="_852"> <input type="radio" name="transmision"
+				value="manual" checked />Manual
+					gearbox
+				</label>
+			</div>
+			<div class="radio" id="_832">
+				<label id="_833"> <input type="radio"  name="transmision"
+				value="SemiAutomatic" />Semi-automatic
+				</label>
+			</div>
+			<div class="radio" id="_847">
+				<label id="_848"> <input type="radio"  name="transmision"
+				value="Automatic" />Automatic
+					transmission
+				</label>
+			</div>
 		</div>
 		<div class="checkbox" id="_853">
-			<label id="_854"> <input type="checkbox" checked />Electric
+			<label id="_854"> <input type="checkbox" name="electric_seat_adjustment"/>Electric
 				seat adjustment
 			</label>
 		</div>
 
-		<div id="_855" class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" id="_856">
-				to <span class="caret"></span>
-			</button>
-			<ul id="_857" class="dropdown-menu" role="menu">
-				<li href="#">
+		<select id="_855" name="to_capacity">
+			<option disabled="disabled" selected value="9000">to</option>
+			<option value="1000">1,000 cm³</option>
+			<option value="1200">1,200 cm³</option>
+			<option value="1400">1,400 cm³</option>
+			<option value="1600">1,600 cm³</option>
+			<option value="1800">1,800 cm³</option>
+			<option value="2000">2,000 cm³</option>
+			<option value="2600">2,600 cm³</option>
+			<option value="3000">3,000 cm³</option>
+			<option value="5000">5,000 cm³</option>
+			<option value="7500">7,500 cm³</option>
+			<option value="8000">8,000 cm³</option>
+			<option value="9000">9,000 cm³</option>
+		</select>
 
-					<div id="_858" class="nm-label">
-						<a id="_859" href="#"> Action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_860" class="nm-label">
-						<a id="_861" href="#"> Another action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_862" class="nm-label">
-						<a id="_863" href="#"> Something else here<br />
-						</a>
-					</div>
-				</li>
-				<li class="divider"></li>
-				<li href="#">
-
-					<div id="_864" class="nm-label">
-						<a id="_865" href="#"> Separated link<br />
-						</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-
-		<div id="_869" class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" id="_870">
-				from <span class="caret"></span>
-			</button>
-			<ul id="_871" class="dropdown-menu" role="menu">
-				<li href="#">
-
-					<div id="_872" class="nm-label">
-						<a id="_873" href="#"> Action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_874" class="nm-label">
-						<a id="_875" href="#"> Another action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_876" class="nm-label">
-						<a id="_877" href="#"> Something else here<br />
-						</a>
-					</div>
-				</li>
-				<li class="divider"></li>
-				<li href="#">
-
-					<div id="_878" class="nm-label">
-						<a id="_879" href="#"> Separated link<br />
-						</a>
-					</div>
-				</li>
-			</ul>
-		</div>
+		<select id="_869" name="from_capacity">
+			<option value="0">from</option>
+			<option value="1000">1,000 cm³</option>
+			<option value="1200">1,200 cm³</option>
+			<option value="1400">1,400 cm³</option>
+			<option value="1600">1,600 cm³</option>
+			<option value="1800">1,800 cm³</option>
+			<option value="2000">2,000 cm³</option>
+			<option value="2600">2,600 cm³</option>
+			<option value="3000">3,000 cm³</option>
+			<option value="5000">5,000 cm³</option>
+			<option value="7500">7,500 cm³</option>
+			<option value="8000">8,000 cm³</option>
+			<option value="9000">9,000 cm³</option>
+		</select>
 		<div class="checkbox" id="_880">
-			<label id="_881"> <input type="checkbox" checked />Navigation
+			<label id="_881"> <input type="checkbox" name="navigation_system"/>Navigation
 				system
 			</label>
 		</div>
@@ -645,12 +496,12 @@
 			</h3>
 		</div>
 		<div class="checkbox" id="_884">
-			<label id="_885"> <input type="checkbox" checked />Xenon
+			<label id="_885"> <input type="checkbox" name="xenon" />Xenon
 				headlights
 			</label>
 		</div>
 		<div class="checkbox" id="_886">
-			<label id="_887"> <input type="checkbox" checked />Adaptive
+			<label id="_887"> <input type="checkbox" name="adaptive_lighting" />Adaptive
 				lighting
 			</label>
 		</div>
@@ -661,17 +512,13 @@
 			</h3>
 		</div>
 
-		<div id="_890">
-			<svg id="_891"> <line id="_892" x1="0" x2="957" y1="" y2="0" />
-			</svg>
-		</div>
 		<div class="checkbox" id="_893">
-			<label id="_894"> <input type="checkbox" checked />Hands-free
+			<label id="_894"> <input type="checkbox" name="hands_free"/>Hands-free
 				kit
 			</label>
 		</div>
 		<div class="checkbox" id="_895">
-			<label id="_896"> <input type="checkbox" checked />Ventilated
+			<label id="_896"> <input type="checkbox" name="ventilated_seats"/>Ventilated
 				Seats
 			</label>
 		</div>
@@ -694,107 +541,60 @@
 			</h3>
 		</div>
 		<div class="checkbox" id="_903">
-			<label id="_904"> <input type="checkbox" checked />Multifunction
+			<label id="_904"> <input type="checkbox" name="multifunction_steering_wheel"/>Multifunction
 				steering wheel
 			</label>
 		</div>
-		<div class="checkbox" id="_905">
-			<label id="_906"> <input type="checkbox" checked />Bluetooth
+		<div class="checkbox" id="_905" name="bluetooth">
+			<label id="_906"> <input type="checkbox" />Bluetooth
 			</label>
 		</div>
 
-		<div id="_907" class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" id="_908">
-				Any <span class="caret"></span>
-			</button>
-			<ul id="_909" class="dropdown-menu" role="menu">
-				<li href="#">
-
-					<div id="_910" class="nm-label">
-						<a id="_911" href="#"> Action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_912" class="nm-label">
-						<a id="_913" href="#"> Another action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_914" class="nm-label">
-						<a id="_915" href="#"> Something else here<br />
-						</a>
-					</div>
-				</li>
-				<li class="divider"></li>
-				<li href="#">
-
-					<div id="_916" class="nm-label">
-						<a id="_917" href="#"> Separated link<br />
-						</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div class="checkbox" id="_918">
-			<label id="_919"> <input type="checkbox" checked />Electric
+		<div class="checkbox" id="_918" name="electronic_heated_seats">
+			<label id="_919"> <input type="checkbox" />Electric
 				heated seats
 			</label>
 		</div>
 
-		<div id="_920">
-			<svg id="_921"> <line id="_922" x1="0" x2="957" y1="" y2="0" />
-			</svg>
-		</div>
 
-		<div id="_923" class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" id="_924">
-				Any <span class="caret"></span>
-			</button>
-			<ul id="_925" class="dropdown-menu" role="menu">
-				<li href="#">
-
-					<div id="_926" class="nm-label">
-						<a id="_927" href="#"> Action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_928" class="nm-label">
-						<a id="_929" href="#"> Another action<br />
-						</a>
-					</div>
-				</li>
-				<li href="#">
-
-					<div id="_930" class="nm-label">
-						<a id="_931" href="#"> Something else here<br />
-						</a>
-					</div>
-				</li>
-				<li class="divider"></li>
-				<li href="#">
-
-					<div id="_932" class="nm-label">
-						<a id="_933" href="#"> Separated link<br />
-						</a>
-					</div>
-				</li>
-			</ul>
-		</div>
+		<select id="_923" name="location">
+				<option value="Sofia">Sofia</option>
+				<option value="Blagoevgrad">Blagoevgrad</option>
+				<option value="Burgas">Burgas</option>
+				<option value="Dobrich">Dobrich</option>
+				<option value="Gabrovo">Gabrovo</option>
+				<option value="Haskovo">Haskovo</option>
+				<option value="Kurdzhali">Kurdzhali</option>
+				<option value="Kyustendil">Kyustendil</option>
+				<option value="Lovech">Lovech</option>
+				<option value="Montana">Montana</option>
+				<option value="Pazardzhik">Pazardzhik</option>
+				<option value="Pernik">Pernik</option>
+				<option value="Pleven">Pleven</option>
+				<option value="Plovdiv">Plovdiv</option>
+				<option value="Razgrad">Razgrad</option>
+				<option value="Ruse">Ruse</option>
+				<option value="Shumen">Shumen</option>
+				<option value="Silistra">Silistra</option>
+				<option value="Sliven">Sliven</option>
+				<option value="Smolyan">Smolyan</option>
+				<option value="Sofiya-Grad">Sofia-Grad</option>
+				<option value="Stara Zagora">Stara Zagora</option>
+				<option value="Turgovishte">Turgovishte</option>
+				<option value="Varna">Varna</option>
+				<option value="Veliko Turnovo">Veliko Turnovo</option>
+				<option value="Vidin">Vidin</option>
+				<option value="Vratsa">Vratsa</option>
+				<option value="Yambol">Yambol</option>
+		</select>
+			
 		<div class="checkbox" id="_934">
-			<label id="_935"> <input type="checkbox" checked />Adaptive
+			<label id="_935"> <input type="checkbox" name="adaptive_cruise_control"/>Adaptive
 				Cruise Control
 			</label>
 		</div>
-		<div class="checkbox" id="_936">
-			<label id="_937"> <input type="checkbox" checked />Metalic
+		<div class="checkbox" id="_936" >
+			<label id="_937"> <input type="checkbox" name="metalic"/>Metalic
 			</label>
 		</div>
 
@@ -804,12 +604,12 @@
 			</h3>
 		</div>
 		<div class="checkbox" id="_940">
-			<label id="_941"> <input type="checkbox" checked />Rain
+			<label id="_941"> <input type="checkbox" name="rain_sensor" />Rain
 				sensor
 			</label>
 		</div>
 		<div class="checkbox" id="_942">
-			<label id="_943"> <input type="checkbox" checked />Immobilizer
+			<label id="_943"> <input type="checkbox" name="imobilizer" />Immobilizer
 			</label>
 		</div>
 
@@ -819,48 +619,40 @@
 			</h3>
 		</div>
 		<div class="checkbox" id="_946">
-			<label id="_947"> <input type="checkbox" checked />Electric
+			<label id="_947"> <input type="checkbox" name="electric_windows" />Electric
 				windows
 			</label>
 		</div>
 		<div class="checkbox" id="_948">
-			<label id="_949"> <input type="checkbox" checked />Daytime
+			<label id="_949"> <input type="checkbox" name="daytime_running_lights"/>Daytime
 				running lights
 			</label>
 		</div>
 		<div class="checkbox" id="_950">
-			<label id="_951"> <input type="checkbox" checked />Collision
+			<label id="_951"> <input type="checkbox" name="collision_avoidance_system"/>Collision
 				Avoidance System
 			</label>
 		</div>
 		<div class="checkbox" id="_952">
-			<label id="_953"> <input type="checkbox" checked />Self-steering
+			<label id="_953"> <input type="checkbox" name="self_steering_systems" />Self-steering
 				systems
 			</label>
 		</div>
 
-		<div id="_954">
-			<svg id="_955"> <line id="_956" x1="0" x2="957" y1="" y2="0" />
-			</svg>
-		</div>
+
 		<div class="checkbox" id="_957">
-			<label id="_958"> <input type="checkbox" checked />Central
+			<label id="_958"> <input type="checkbox" name="central_locking" />Central
 				locking
 			</label>
 		</div>
 
-		<div id="_959" class="nm-label">
-			<h3 id="_960">
-				Location<br />
-			</h3>
-		</div>
 		<div class="checkbox" id="_961">
-			<label id="_962"> <input type="checkbox" checked />MP3
+			<label id="_962"> <input type="checkbox" name="mp3_interface" />MP3
 				interface
 			</label>
 		</div>
 		<div class="checkbox" id="_963">
-			<label id="_964"> <input type="checkbox" checked />Four
+			<label id="_964"> <input type="checkbox" name="four_wheel_drive" />Four
 				wheel drive
 			</label>
 		</div>
@@ -870,13 +662,13 @@
 			</svg>
 		</div>
 		<div class="checkbox" id="_968">
-			<label id="_969"> <input type="checkbox" checked />Light
+			<label id="_969"> <input type="checkbox" name="light_sensor"/>Light
 				sensor
 			</label>
 		</div>
 
 		<div class="checkbox" id="_974">
-			<label id="_975"> <input type="checkbox" checked />LED
+			<label id="_975"> <input type="checkbox" name="led_headlights" />LED
 				Headlights
 			</label>
 		</div>
@@ -887,54 +679,54 @@
 			</h3>
 		</div>
 		<div class="checkbox" id="_978">
-			<label id="_979"> <input type="checkbox" checked />Tuner/radio
+			<label id="_979"> <input type="checkbox" name="tuner_radio"/>Tuner/radio
 			</label>
 		</div>
 		<div class="checkbox" id="_980">
-			<label id="_981"> <input type="checkbox" checked />Camera
+			<label id="_981"> <input type="checkbox" name="camera"/>Camera
 			</label>
 		</div>
 		<div class="checkbox" id="_982">
-			<label id="_983"> <input type="checkbox" checked />Power
+			<label id="_983"> <input type="checkbox" name="power_assisted_steering" />Power
 				Assisted Steering
 			</label>
 		</div>
-		<div class="checkbox" id="_984">
-			<label id="_985"> <input type="checkbox" checked />Auxiliary
+		<div class="checkbox" id="_984" >
+			<label id="_985"> <input type="checkbox" name="auxiliary"/>Auxiliary
 				heating
 			</label>
 		</div>
-		<div class="checkbox" id="_986">
-			<label id="_987"> <input type="checkbox" checked />Sunroof
+		<div class="checkbox" id="_986" >
+			<label id="_987"> <input type="checkbox" name="sunroof" />Sunroof
 			</label>
 		</div>
 		<div class="checkbox" id="_988">
-			<label id="_989"> <input type="checkbox" checked />On-board
+			<label id="_989"> <input type="checkbox" name="on_board_computer" />On-board
 				computer
 			</label>
 		</div>
-		<div class="checkbox" id="_990">
-			<label id="_991"> <input type="checkbox" checked />Start-stop
+		<div class="checkbox" id="_990" >
+			<label id="_991"> <input type="checkbox" name="start_stop_system" />Start-stop
 				system
 			</label>
 		</div>
 		<div class="checkbox" id="_992">
-			<label id="_993"> <input type="checkbox" checked />Electric
+			<label id="_993"> <input type="checkbox" name="electric_side_mirror"/>Electric
 				side mirror
 			</label>
 		</div>
 		<div class="checkbox" id="_994">
-			<label id="_995"> <input type="checkbox" checked />Front
+			<label id="_995"> <input type="checkbox" name="front_sensor"/>Front
 			</label>
 		</div>
 
 		<div class="checkbox" id="_998">
-			<label id="_999"> <input type="checkbox" checked />ABS
+			<label id="_999"> <input type="checkbox" name="abs" />ABS
 			</label>
 		</div>
 
-		<div class="checkbox" id="_1002">
-			<label id="_1003"> <input type="checkbox" checked />Cruise
+		<div class="checkbox" id="_1002" >
+			<label id="_1003"> <input type="checkbox" name="cruise_control"/>Cruise
 				control
 			</label>
 		</div>
@@ -945,21 +737,21 @@
 			</h3>
 		</div>
 		<div class="checkbox" id="_1006">
-			<label id="_1007"> <input type="checkbox" checked />Rear
+			<label id="_1007"> <input type="checkbox" name="rear_sensor" />Rear
 			</label>
 		</div>
 		<div class="checkbox" id="_1008">
-			<label id="_1009"> <input type="checkbox" checked />Lane
+			<label id="_1009"> <input type="checkbox" name="lane_departure_warning_system"/>Lane
 				Departure Warning System
 			</label>
 		</div>
 		<div class="checkbox" id="_1010">
-			<label id="_1011"> <input type="checkbox" checked />More
+			<label id="_1011"> <input type="checkbox" name="more_airbags" />More
 				Airbags
 			</label>
 		</div>
 		<div class="checkbox" id="_1012">
-			<label id="_1013"> <input type="checkbox" checked />Side
+			<label id="_1013"> <input type="checkbox" name="side_airbags"/>Side
 				Airbags
 			</label>
 		</div>
@@ -970,7 +762,7 @@
 			</h3>
 		</div>
 		<div class="checkbox" id="_1018">
-			<label id="_1019"> <input type="checkbox" checked />Fog lamp
+			<label id="_1019"> <input type="checkbox" name="fog_lamp"/>Fog lamp
 			</label>
 		</div>
 
@@ -982,7 +774,7 @@
 
 		<div id="_1022" class="nm-label">
 			<h3 id="_1023">
-				Region<br />
+				Location<br />
 			</h3>
 		</div>
 
@@ -1014,7 +806,7 @@
 			class="btn btn-default">Find</button>
 
 		<div class="checkbox" id="_1037">
-			<label id="_1038"> <input type="checkbox" checked />Front
+			<label id="_1038"> <input type="checkbox" name="front_airbags" />Front
 				Airbags
 			</label>
 		</div>
@@ -1024,62 +816,69 @@
 				Parking sensors <br />
 			</h3>
 		</div>
-		<div class="checkbox" id="_1043">
-			<label id="_1044"> <input type="checkbox" checked />CD
+		<div class="checkbox" id="_1043" >
+			<label id="_1044"> <input type="checkbox" name="cd_player"/>CD
 				player
 			</label>
 		</div>
 		<div id="vehicle_type_detailed_search">
 			<div class="radio" id="_1045">
-				<label id="_1046"> <input type="radio" name=vehicleType
+				<label id="_1046"> <input type="radio" name="vehicle_type"
 					value="cabriolet_roadster" />Cabriolet / Roadster
 				</label>
 			</div>
 			<div class="radio" id="_1047">
-				<label id="_1048"> <input type="radio" name=vehicleType
+				<label id="_1048"> <input type="radio" name="vehicle_type"
 					value="sportsCar_coupe" />Sports Car / Coupe
 				</label>
 			</div>
 			<div class="radio" id="_1049">
-				<label id="_1050"> <input type="radio" name=vehicleType
+				<label id="_1050"> <input type="radio" name="vehicle_type"
 					value="samllCar" />Small Car
 				</label>
 			</div>
 			<div class="radio" id="_1051">
-				<label id="_1052"> <input type="radio" checked
-					name=vehicleType value="saloon" />Saloon
+				<label id="_1052"> <input type="radio" checked name="vehicle_type" 
+				value="saloon" />Saloon
 				</label>
 			</div>
 			<div class="radio" id="_1053">
-				<label id="_1054"> <input type="radio" name=vehicleType
+				<label id="_1054"> <input type="radio" name="vehicle_type"
 					value="estate" />Estate
 				</label>
 			</div>
 		</div>
-		<div class="radio" id="_1055">
-			<label id="_1056"> <input type="radio" />Petrol
-			</label>
+		
+		<div id="fuel_type_detailed_search">
+			<div class="radio" id="_1055">
+				<label id="_1056"> <input type="radio" name=fuel_type
+				value="Petrol" checked/>Petrol
+				</label>
+			</div>
+			<div class="radio" id="_1057">
+				<label id="_1058"> <input type="radio" name=fuel_type
+				value="Diesel"/>Diesel
+				</label>
+			</div>
+			<div class="radio" id="_1059">
+				<label id="_1060"> <input type="radio" name=fuel_type
+				value="Natural Gas"/>Natural Gas
+				</label>
+			</div>
+			<div class="radio" id="_1061">
+				<label id="_1062"> <input type="radio" name=fuel_type
+				value="Hybrid"/>Hybrid
+				</label>
+			</div>
+			<div class="radio" id="_1063">
+				<label id="_1064"> <input type="radio" name=fuel_type
+				value="Electric"/>Electric
+				</label>
+			</div>
 		</div>
-		<div class="radio" id="_1057">
-			<label id="_1058"> <input type="radio" />Diesel
-			</label>
-		</div>
-		<div class="radio" id="_1059">
-			<label id="_1060"> <input type="radio" />Natural Gas
-			</label>
-		</div>
-		<div class="radio" id="_1061">
-			<label id="_1062"> <input type="radio" checked />Hybrid
-			</label>
-		</div>
-		<div class="radio" id="_1063">
-			<label id="_1064"> <input type="radio" />Electric
-			</label>
-		</div>
-
+		</form>
 		<div id="_1065">
-
-			<div id="_1066" data-pagelink="HomePageFindCar" class="nm-label">
+			<div id="_1066" data-pagelink="../pages/HomePageFindCar" class="nm-label">
 				<span id="_1067"> Home<br />
 				</span>
 			</div>

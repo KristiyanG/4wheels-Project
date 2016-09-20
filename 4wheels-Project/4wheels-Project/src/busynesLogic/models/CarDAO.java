@@ -39,8 +39,8 @@ public class CarDAO {
 			stm.setString(1, car.getMake());
 			stm.setString(2, car.getModel());
 			stm.setString(3, car.getVariant());
-			stm.setInt(4, 3);
-			stm.setInt(5, 3);
+			stm.setString(4, car.getUserEmail());
+			stm.setInt(5, 0); // rating
 			stm.setString(6, car.getVehicleType());
 			stm.setInt(7, car.getYear());
 			stm.setInt(8, car.getKilometer());
@@ -50,8 +50,8 @@ public class CarDAO {
 			stm.setString(12, car.getTransmision());
 			stm.setInt(13, 9999);
 			stm.setString(14, car.getLocation());
-			stm.setString(15, "black");
-			stm.setString(16, "delete this");
+			stm.setString(15, car.getColor()); // color
+			stm.setString(16, "delete this"); //region
 			stm.setBoolean(17, true);
 			stm.setBoolean(18, car.isAuxiliaryHeating());
 			stm.setBoolean(19, car.isCruiseControl());
@@ -108,7 +108,7 @@ public class CarDAO {
 
 	private String createInsertQuery(Car car) {
 		
-		String tableFields = "make, model, variant, user_id, rating, vehicle_type, "
+		String tableFields = "make, model, variant, user_email, rating, vehicle_type, "
 				+ "first_registration, kilometer, price, power_full, fuel_type, "
 				+ "transmision, cubic_capacity, region, color, interior_color, "
 				+ "metalic, auxiliary_heating, cruise_control, sunroof, "

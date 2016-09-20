@@ -9,26 +9,23 @@
 <html>
 <head>
 <script>
-        function makeFullScreen() {
-         var divObj = document.getElementById("theImage");
-       //Use the specification method before using prefixed versions
-      if (divObj.requestFullscreen) {
-        divObj.requestFullscreen();
-      }
-      else if (divObj.msRequestFullscreen) {
-        divObj.msRequestFullscreen();            
-      }
-      else if (divObj.mozRequestFullScreen) {
-        divObj.mozRequestFullScreen();
-      }
-      else if (divObj.webkitRequestFullscreen) {
-        divObj.webkitRequestFullscreen();
-      } else {
-        console.log("Fullscreen API is not supported");
-      } 
+	function makeFullScreen() {
+		var divObj = document.getElementById("theImage");
+		//Use the specification method before using prefixed versions
+		if (divObj.requestFullscreen) {
+			divObj.requestFullscreen();
+		} else if (divObj.msRequestFullscreen) {
+			divObj.msRequestFullscreen();
+		} else if (divObj.mozRequestFullScreen) {
+			divObj.mozRequestFullScreen();
+		} else if (divObj.webkitRequestFullscreen) {
+			divObj.webkitRequestFullscreen();
+		} else {
+			console.log("Fullscreen API is not supported");
+		}
 
-    }
-     </script>
+	}
+</script>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -53,12 +50,8 @@
 
 			<div id="_219" data-pagelink="0643bef3-8d19-a14a-5405-03ab8048f78e"
 				class="nm-label">
-<<<<<<< HEAD
 				<a href="../jsp/AddCarPage.jsp"> Add Car</a>
-=======
-				<span id="_220"> Add Car<br />
-				</span>
->>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
+
 			</div>
 
 			<div id="_221" data-pagelink="53df4c96-963c-9ce0-edb9-83fdf279daf5"
@@ -83,14 +76,12 @@
 				href="#">Log out</a>
 
 		</div>
-<<<<<<< HEAD
 
-		<i id="_228">  </i>
-=======
 		<div id="_228">
-			
-			<img id="theImage" src="../PictureServlet"  height="150" width="150" onClick="makeFullScreen()" ></div>
->>>>>>> 3fbe63ac5a887a32e26c5befd72a89166e76978b
+
+			<img id="theImage" src="../PictureServlet" height="150" width="150"
+				onClick="makeFullScreen()">
+		</div>
 
 		<div id="_229" data-pagelink="ViewCar">
 
@@ -139,61 +130,45 @@
 
 		<div id="_251" data-pagelink="91a7070b-f517-e79f-b0b7-54afc24f79fd"
 			class="nm-label">
-<<<<<<< HEAD
-			<a id="_252" href="#"> Edit Profile<br />
-=======
-			<a href="../jsp/EditProfile.jsp"> Edit Profile</a><br />
->>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
-			</a>
+
+			<a href="../jsp/EditProfile.jsp"> Edit Profile</a><br /> </a>
 		</div>
-<% if(u!=null){%>
+
+		<%
+			User u = (User) (session.getAttribute("user"));
+		%>
+		<%
+			if (u != null) {
+		%>
 		<div id="_253" data-pagelink="b7b0732b-5938-8ca4-6173-441f1ef0bd01"
 			class="nm-label">
 			<h3 id="_254">
-<<<<<<< HEAD
-				<%
-					User u = (User) (session.getAttribute("user"));
-				%>
 				<%=u.getName()%>
 				<br />
-=======
-				Ne znam <br />
-			</h3>
-		</div>
 
-		<div id="_255" class="nm-label">
-			<h3 id="_256">
-				User<br />
->>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
 			</h3>
 		</div>
 
 		<div id="_257" class="nm-label">
 			<h3 id="_258">
-<<<<<<< HEAD
 				Location:
 				<%=u.getLocation()%>
 				<br />
-=======
-				Location<br />
->>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
+
 			</h3>
 		</div>
 
 		<div id="_259" class="nm-label">
 			<h3 id="_260">
-<<<<<<< HEAD
+
 				<%=u.getPhone()%>
-=======
-				<%
-					User u = (User) (session.getAttribute("user"));
-				%>
-				<%=u.getName()%>
->>>>>>> e89f7858ea866b8bed2880f90bf200975ccdaa47
+
 				<br />
 			</h3>
 		</div>
-<%} %>
+		<%
+			}
+		%>
 		<div id="_261">
 			<svg id="_262"> <line id="_263" x1="0" x2="961" y1="" y2="0" />
 			</svg>

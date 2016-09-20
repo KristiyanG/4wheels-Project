@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import busynesLogic.exceptions.UserException;
 import busynesLogic.models.User;
 import busynesLogic.models.UserDAO;
 
@@ -27,10 +28,15 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("Email");
 		String password = request.getParameter("Password");
 		
-		
 		UserDAO logIn = UserDAO.getInstance();
 		
-		User user = logIn.getUser(email, password);
+		User user=null;
+		try {
+			user = logIn.getUser(email, password);
+		} catch (UserException e) {
+			request.getSession().setAttribute("loginErr", "Invadil username or password !");
+			response.sendRedirect("jsp/Login.jsp");
+		}
 	
 		if(user != null){
 			HttpSession ses = request.getSession();
@@ -38,7 +44,9 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("jsp/ProfilePage.jsp");
 		}
 		else{
-			response.sendRedirect("pages/Login.html");
+			request.getSession().setAttribute("loginErr", "Invadil username or password !");
+			response.sendRedirect("jsp/Login.jsp");
+
 		}
 		
 	}

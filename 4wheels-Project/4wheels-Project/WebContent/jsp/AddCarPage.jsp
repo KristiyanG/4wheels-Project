@@ -471,7 +471,7 @@
 				</label>
 			</div>
 			<div class="checkbox" id="_421">
-				<label id="_422"> <input type="checkbox" />Metalic
+				<label id="_422"> <input type="checkbox" name="metalic" />Metalic
 				</label>
 			</div>
 			<div class="checkbox" id="_423">
@@ -671,51 +671,51 @@
 				</h3>
 			</div>
 			<div class="radio" id="_525">
-				<label id="_526"> <input type="radio" checked />Black
+				<label id="_526"> <input type="radio" checked name="color" value="black" />Black
 				</label>
 			</div>
 			<div class="radio" id="_527">
-				<label id="_528"> <input type="radio" />Grey
+				<label id="_528"> <input type="radio" name="color" value="grey" />Grey
 				</label>
 			</div>
 			<div class="radio" id="_529">
-				<label id="_530"> <input type="radio" />White
+				<label id="_530"> <input type="radio" name="color" value="white" />White
 				</label>
 			</div>
 			<div class="radio" id="_531">
-				<label id="_532"> <input type="radio" />Beige
+				<label id="_532"> <input type="radio" name="color" value="beige"/>Beige
 				</label>
 			</div>
 			<div class="radio" id="_533">
-				<label id="_534"> <input type="radio" />Silver
+				<label id="_534"> <input type="radio" name="color" value="silver" />Silver
 				</label>
 			</div>
 			<div class="radio" id="_535">
-				<label id="_536"> <input type="radio" />Brown
+				<label id="_536"> <input type="radio" name="color" value="brown" />Brown
 				</label>
 			</div>
 			<div class="radio" id="_537">
-				<label id="_538"> <input type="radio" />Green
+				<label id="_538"> <input type="radio" name="color" value="green" />Green
 				</label>
 			</div>
 			<div class="radio" id="_539">
-				<label id="_540"> <input type="radio" />Blue
+				<label id="_540"> <input type="radio" name="color" value="blue" />Blue
 				</label>
 			</div>
 			<div class="radio" id="_541">
-				<label id="_542"> <input type="radio" />Red
+				<label id="_542"> <input type="radio" name="color" value="red"/>Red
 				</label>
 			</div>
 			<div class="radio" id="_543">
-				<label id="_544"> <input type="radio" />Orange
+				<label id="_544"> <input type="radio" name="color" value="orange"/>Orange
 				</label>
 			</div>
 			<div class="radio" id="_545">
-				<label id="_546"> <input type="radio" />Other
+				<label id="_546"> <input type="radio" name="color" value="other" />Other
 				</label>
 			</div>
 			<div class="radio" id="_547">
-				<label id="_548"> <input type="radio" />Yellow
+				<label id="_548"> <input type="radio" name="color" value="yellow"/>Yellow
 				</label>
 			</div>
 			<textarea id="_549" placeholder=" more information"></textarea>

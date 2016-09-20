@@ -16,6 +16,7 @@ public class Car implements Vehicle {
 	private int price;
 	private int power;
 	private String location;
+	private String color;
 	private boolean auxiliaryHeating;
 	private boolean cruiseControl;
 	private boolean electricWindows;
@@ -61,7 +62,7 @@ public class Car implements Vehicle {
 	private boolean keylessEntry;
 
 	public Car(String email, String make, String model, String variant, String fuel, String vehicleType,
-			String transmision, int year, int kilometer, int price, int power, String location,
+			String color , String transmision, int year, int kilometer, int price, int power, String location,
 			boolean auxiliaryHeating, boolean cruiseControl, boolean electricWindows, boolean sunroof,
 			boolean powerAssistedSteering, boolean mp3Interface, boolean bluetooth, boolean electricHeatedSeats,
 			boolean tunerRadio, boolean onBoardComputer, boolean rainSensor, boolean multifunctionSteeringWheel,
@@ -81,6 +82,7 @@ public class Car implements Vehicle {
 		this.variant = variant;
 		this.fuel = fuel;
 		this.vehicleType = vehicleType;
+		this.color = color;
 		this.transmision = transmision;
 		this.year = year;
 		this.kilometer = kilometer;
@@ -460,16 +462,13 @@ public class Car implements Vehicle {
 		return keylessEntry;
 	}
 
-
+	public String getColor() {
+		return color;
+	}
 
 	@Override
 	public double getRating() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 3fbe63ac5a887a32e26c5befd72a89166e76978b

@@ -20,12 +20,19 @@ import busynesLogic.models.User;
 public class AddCarServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		Car car = createCar(request);
+		CarDAO accesser = CarDAO.getInstance();
+		accesser.insertCar(car);
+				
+		request.getRequestDispatcher("pages/Profile.html").forward(request, response);
+	}
+
+	private Car createCar(HttpServletRequest request) {
 		String make = request.getParameter("Make");
 		String model = request.getParameter("Model");
 		String variant = request.getParameter("Variant");
@@ -37,7 +44,7 @@ public class AddCarServlet extends HttpServlet {
 		int price = Integer.valueOf(request.getParameter("price"));
 		int power = Integer.valueOf(request.getParameter("power"));
 		String location = request.getParameter("location");
-		
+		String color = request.getParameter("color");
 		boolean auxiliaryHeating = request.getParameter("auxiliaryHeating") != null;
 		boolean cruiseControl = request.getParameter("cruise_control") != null;
 		boolean electricWindows = request.getParameter("electricWindows") != null;
@@ -82,9 +89,9 @@ public class AddCarServlet extends HttpServlet {
 		boolean tractionControl = request.getParameter("traction_control") != null;
 		boolean keylessEntry = request.getParameter("keyless_entry") != null;
 		
-//		String email = ((User)request.getSession(false).getAttribute("user")).getEmail();
+		String email = ((User)request.getSession(false).getAttribute("user")).getEmail();
 		
-		Car car = new Car("mail@ma.il", make, model, variant, fuel, vehicleType, transmision, year, kilometer, price, power, location,
+		Car car = new Car(email, make, model, variant, fuel, vehicleType, color, transmision, year, kilometer, price, power, location,
 				auxiliaryHeating, cruiseControl, electricWindows, sunroof, powerAssistedSteering, mp3Interface, bluetooth,
 				electricHeatedSeats, tunerRadio, onBoardComputer, rainSensor, multifunctionSteeringWheel,
 				handsFreeKit, cdPlayer, electricSeatAdjustment, centralLocking, startStopSystem, electricSideMirror, 
@@ -92,74 +99,7 @@ public class AddCarServlet extends HttpServlet {
 				fourWheelDrive, adaptiveCruiseControl, daytimeRunningLights, collisionAvoidanceSystem, lightSensor, 
 				immobilizer, adaptiveLighting, frontAirbags, sideAirbags, moreAirbags, rearSensors, frontSensors,
 				camera, selfSteeringSystems, esp, xenonHeadlights, tractionControl, keylessEntry);
-		
-		CarDAO accesser = CarDAO.getInstance();
-		accesser.insertCar(car);
-		
-		
-//		List<String> list = new ArrayList<String>();
-//		list.add(make);
-//		list.add(model);
-//		list.add(variant);
-//		list.add(fuel);
-//		list.add(vehicleType);
-//		list.add(transmision);
-//		list.add(year);
-//		list.add(kilometer);
-//		list.add(price);
-//		list.add(power);
-//		list.add(location);
-//		list.add(auxiliaryHeating);
-//		list.add(cruiseControl);
-//		list.add(electricWindows);
-//		list.add(sunroof);
-//		list.add(powerAssistedSteering);
-//		list.add(mp3Interface);
-//		list.add(bluetooth);
-//		list.add(electricHeatedSeats);
-//		list.add(tunerRadio);
-//		list.add(onBoardComputer);
-//		list.add(rainSensor);
-//		list.add(multifunctionSteeringWheel);
-//		list.add(handsFreeKit);
-//		list.add(cdPlayer);
-//		list.add(electricSeatAdjustment);
-//		list.add(centralLocking);
-//		list.add(startStopSystem);
-//		list.add(electricSideMirror);
-//		list.add(ventilatedSeats);
-//		list.add(navigationSystem);
-//		list.add(headUpDisplay);
-//		list.add(laneDepartureWarningSystem);
-//		list.add(abs);
-//		list.add(fogLamp);
-//		list.add(ledHeadlights);
-//		list.add(fourWheelDrive);
-//		list.add(adaptiveCruiseControl);
-//		list.add(daytimeRunningLights);
-//		list.add(collisionAvoidanceSystem);
-//		list.add(lightSensor);		
-//		list.add(immobilizer);
-//		list.add(adaptiveLighting);
-//		list.add(frontAirbags);
-//		list.add(sideAirbags);
-//		list.add(moreAirbags);
-//		list.add(rearSensors);
-//		list.add(frontSensors);
-//		list.add(camera);
-//		list.add(selfSteeringSystems);
-//		list.add(esp);
-//		list.add(xenonHeadlights);
-//		list.add(tractionControl);
-//		list.add(keylessEntry);	
-//		for (String string : list) {
-//			System.out.println(string + " ");
-//		}
-		
-//		RequestDispatcher view = request.getRequestDispatcher("pages/Profile.html");
-//		view.forward(request, response);
-		
-		response.sendRedirect("pages/Profile.html");
+		return car;
 	}
 
 }
